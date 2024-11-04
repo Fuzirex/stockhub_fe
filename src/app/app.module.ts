@@ -15,6 +15,8 @@ import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {InitService} from "./services/init/init.service";
 import {ContextService} from "./services/context/context.service";
+import {NgxSpinnerModule} from "ngx-spinner";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import {ContextService} from "./services/context/context.service";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,

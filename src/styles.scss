@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilo para o corpo da página para centralização */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background: rgb(240, 240, 240);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo para o componente de login */
+.login-card {
+  width: 100%;
+  max-width: 400px; /* Define uma largura máxima para o formulário */
+  padding: 20px;
+  text-align: center; /* Centraliza o texto dentro do card */
+}
+
+.login-title {
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+.login-field {
+  width: 100%; /* Faz com que os campos ocupem toda a largura do container */
+  margin-bottom: 16px; /* Espaço entre os campos de texto */
+}
+
+.login-button {
+  width: 100%; /* Faz o botão ocupar toda a largura do container */
+}

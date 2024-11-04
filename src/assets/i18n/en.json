@@ -1,5 +1,5 @@
 {
   "project-title": "StockHub",
   "unauthorized-access": "Your session has expired or you do not have permission to access this system, please login again.",
-  "test": "Test EN"
+  "loading": "Loading"
 }

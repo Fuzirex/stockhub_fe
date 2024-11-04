@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ContextService} from "../../services/context/context.service";
 import {TranslateService} from "@ngx-translate/core";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private contextService: ContextService,
-    private translateService: TranslateService
+    private spinner: NgxSpinnerService
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -25,8 +26,9 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    const {username, password} = this.loginForm.value;
-    this.contextService.configureLanguage(username/*, this.translateService*/);
+    /*const {username, password} = this.loginForm.value;
+    this.contextService.configureLanguage(username);*/
+    this.spinner.show();
 
     /*if (this.loginForm.valid) {
       const {username, password} = this.loginForm.value;

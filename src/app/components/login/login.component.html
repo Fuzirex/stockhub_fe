@@ -1,8 +1,9 @@
+<!--
 <mat-card class="login-card">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <h2>Login</h2>
 
-    <mat-form-field appearance="fill" class="form-field">
+    <mat-form-field appearance="fill">
       <mat-label>{{ 'test' | translate }}</mat-label>
       <input matInput formControlName="username" placeholder="Enter your username" />
       <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
@@ -10,7 +11,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="form-field">
+    <mat-form-field appearance="fill">
       <mat-label>{{ 'unauthorized-access' | translate }}</mat-label>
       <input matInput formControlName="password" type="password" placeholder="Enter your password" />
       <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
@@ -19,5 +20,33 @@
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit">Login</button>
+  </form>
+</mat-card>
+-->
+
+<mat-card class="login-card">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2 class="login-title">Login</h2>
+
+    <mat-form-field appearance="fill" class="login-field">
+      <mat-label>{{ 'test' | translate }}</mat-label>
+      <input matInput formControlName="username" placeholder="Enter your username" />
+      <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+        Username is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always" class="login-field">
+      <mat-label>{{ 'unauthorized-access' | translate }}</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Enter your password" />
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="login-button">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+      Login
+    </button>
   </form>
 </mat-card>
