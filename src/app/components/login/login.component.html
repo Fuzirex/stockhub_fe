@@ -3,7 +3,7 @@
     <h2>Login</h2>
 
     <mat-form-field appearance="fill" class="form-field">
-      <mat-label>Username</mat-label>
+      <mat-label>{{ 'test' | translate }}</mat-label>
       <input matInput formControlName="username" placeholder="Enter your username" />
       <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
         Username is required
@@ -11,14 +11,13 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="form-field">
-      <mat-label>Password</mat-label>
+      <mat-label>{{ 'unauthorized-access' | translate }}</mat-label>
       <input matInput formControlName="password" type="password" placeholder="Enter your password" />
       <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
         Password is required
       </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+    <button mat-raised-button color="primary" type="submit">Login</button>
   </form>
 </mat-card>
-
