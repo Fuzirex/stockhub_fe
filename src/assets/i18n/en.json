@@ -5,6 +5,7 @@
   "cnpj": "CNPJ",
   "password": "Password",
   "login": "Login",
+  "footer-message": "StockHub, simplifying inventory management to accelerate your business",
 
   "validations": {
     "invalidLegalNumber": "Invalid legal number",

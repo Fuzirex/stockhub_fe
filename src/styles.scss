@@ -17,9 +17,9 @@ $my-app-theme:   mat.define-light-theme((
 
 @include mat.all-component-themes($my-app-theme);
 
-body, html {
+/*body, html {
   background: rgb(245, 245, 245);
-}
+}*/
 
 .just-white {
   color: white;

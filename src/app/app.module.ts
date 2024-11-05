@@ -17,11 +17,13 @@ import {InitService} from "./services/init/init.service";
 import {ContextService} from "./services/context/context.service";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {MatIconModule} from "@angular/material/icon";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent
   ],
   imports: [
     TranslateModule.forRoot({
