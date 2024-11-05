@@ -1,5 +1,13 @@
 {
   "project-title": "StockHub",
   "unauthorized-access": "Su sesión ha expirado o no tiene permiso para acceder a este sistema, inicie sesión nuevamente.",
-  "loading": "Cargando"
+  "loading": "Cargando",
+  "cnpj": "CNPJ",
+  "password": "Contraseña",
+  "login": "Entrar",
+
+  "validations": {
+    "invalidLegalNumber": "Número de identidad inválido",
+    "required": "Campo requerido"
+  }
 }

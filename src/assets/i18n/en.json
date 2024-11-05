@@ -1,5 +1,13 @@
 {
   "project-title": "StockHub",
   "unauthorized-access": "Your session has expired or you do not have permission to access this system, please login again.",
-  "loading": "Loading"
+  "loading": "Loading",
+  "cnpj": "CNPJ",
+  "password": "Password",
+  "login": "Login",
+
+  "validations": {
+    "invalidLegalNumber": "Invalid legal number",
+    "required": "Required field"
+  }
 }

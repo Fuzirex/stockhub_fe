@@ -1,52 +1,31 @@
-<!--
-<mat-card class="login-card">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <h2>Login</h2>
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="p-4 col-11 col-md-8 col-lg-4 round-transparent-background">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2 class="text-center mb-4">{{ 'login' | translate }}</h2>
 
-    <mat-form-field appearance="fill">
-      <mat-label>{{ 'test' | translate }}</mat-label>
-      <input matInput formControlName="username" placeholder="Enter your username" />
-      <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
-        Username is required
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field class="w-100 mb-3">
+        <mat-label>{{ 'cnpj' | translate }}</mat-label>
+        <input matInput formControlName="cnpj"/>
+        <mat-error *ngIf="loginForm.get('cnpj')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>{{ 'unauthorized-access' | translate }}</mat-label>
-      <input matInput formControlName="password" type="password" placeholder="Enter your password" />
-      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-        Password is required
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field class="w-100 mb-3">
+        <mat-label>{{ 'password' | translate }}</mat-label>
+        <input matInput formControlName="password" type="password" placeholder="{{ 'validations.required' | translate }}"/>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Login</button>
-  </form>
-</mat-card>
--->
+      <div class="w-100 d-flex justify-content-center">
+        <button mat-raised-button color="primary" type="submit">
+          <i class="bi bi-key me-2"></i>
+          <span>{{ 'login' | translate }}</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 
-<mat-card class="login-card">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <h2 class="login-title">Login</h2>
-
-    <mat-form-field appearance="fill" class="login-field">
-      <mat-label>{{ 'test' | translate }}</mat-label>
-      <input matInput formControlName="username" placeholder="Enter your username" />
-      <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
-        Username is required
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" floatLabel="always" class="login-field">
-      <mat-label>{{ 'unauthorized-access' | translate }}</mat-label>
-      <input matInput formControlName="password" type="password" placeholder="Enter your password" />
-      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-        Password is required
-      </mat-error>
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit" class="login-button">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-      Login
-    </button>
-  </form>
-</mat-card>

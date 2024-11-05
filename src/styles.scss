@@ -1,31 +1,39 @@
-/* Estilo para o corpo da página para centralização */
+@use '@angular/material' as mat;
+@include mat.core();
+
+@import "./styles/variables.scss";
+
+// Warn is also using the primary color to make the warning borders in form fields appear the same color
+$my-app-primary: mat.define-palette($palette-primary);
+$my-app-accent:  mat.define-palette($palette-accent);
+$my-app-warn:    mat.define-palette($palette-primary);
+$my-app-theme:   mat.define-light-theme((
+  color: (
+    primary: $my-app-primary,
+    accent: $my-app-accent,
+    warn: $my-app-warn,
+  )
+));
+
+@include mat.all-component-themes($my-app-theme);
+
 body, html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  background: rgb(240, 240, 240);
-  align-items: center;
-  justify-content: center;
+  background: rgb(245, 245, 245);
 }
 
-/* Estilo para o componente de login */
-.login-card {
-  width: 100%;
-  max-width: 400px; /* Define uma largura máxima para o formulário */
-  padding: 20px;
-  text-align: center; /* Centraliza o texto dentro do card */
+.just-white {
+  color: white;
 }
 
-.login-title {
-  margin-bottom: 20px; /* Espaço abaixo do título */
+.absolut-background {
+  background-image: url('/assets/images/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.login-field {
-  width: 100%; /* Faz com que os campos ocupem toda a largura do container */
-  margin-bottom: 16px; /* Espaço entre os campos de texto */
-}
-
-.login-button {
-  width: 100%; /* Faz o botão ocupar toda a largura do container */
+.round-transparent-background {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
