@@ -6,8 +6,14 @@
 
 <main class="absolut-background">
 
-  <div class="container">
-    <router-outlet></router-outlet>
+  <app-header [title]="title"></app-header>
+
+  <div class="overflow-auto d-grid vh-100">
+    <div class="padding-for-layout h-100">
+      <div class="container h-100">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
 
   <app-footer></app-footer>

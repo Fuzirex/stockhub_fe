@@ -10,5 +10,10 @@
   "validations": {
     "invalidLegalNumber": "Invalid legal number",
     "required": "Required field"
+  },
+
+  "headers": {
+    "login": "Access StockHub",
+    "stock": "Stock"
   }
 }

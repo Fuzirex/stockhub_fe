@@ -21,4 +21,8 @@ export class ContextService {
     sessionStorage.setItem('language', language);
   }
 
+  getLanguage(): string {
+    return sessionStorage.getItem('language')!;
+  }
+
 }

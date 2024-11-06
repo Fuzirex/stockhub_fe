@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ContextService} from "../../services/context/context.service";
-import {TranslateService} from "@ngx-translate/core";
 import {NgxSpinnerService} from "ngx-spinner";
-import {ThemePalette} from "@angular/material/core";
 
 @Component({
   selector: 'app-login',
@@ -14,12 +12,10 @@ import {ThemePalette} from "@angular/material/core";
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private contextService: ContextService,
-    private spinner: NgxSpinnerService
-  ) {
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private contextService: ContextService,
+              private spinner: NgxSpinnerService) {
     this.loginForm = this.formBuilder.group({
       cnpj: ['', Validators.required],
       password: ['', Validators.required],
@@ -27,12 +23,13 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    const {cnpj, password} = this.loginForm.value;
-    this.contextService.configureLanguage(cnpj);
+    //const {cnpj, password} = this.loginForm.value;
+    this.router.navigateByUrl('stock');
 
     /*if (this.loginForm.valid) {
       const {username, password} = this.loginForm.value;
       console.log("Username: " + username + " - Password: " + password);
     }*/
   }
+
 }

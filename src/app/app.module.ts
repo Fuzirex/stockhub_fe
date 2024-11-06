@@ -18,12 +18,17 @@ import {ContextService} from "./services/context/context.service";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {MatIconModule} from "@angular/material/icon";
 import { FooterComponent } from './components/footer/footer.component';
+import {MatTableModule} from "@angular/material/table";
+import { HeaderComponent } from './components/header/header.component';
+import { StockComponent } from './components/stock/stock.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent,
+    StockComponent
   ],
   imports: [
     TranslateModule.forRoot({
@@ -43,7 +48,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [
     {

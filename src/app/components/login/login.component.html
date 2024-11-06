@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center align-items-center vh-100">
+<div class="d-flex justify-content-center align-items-center h-100">
   <div class="p-4 col-11 col-md-8 col-lg-4 round-transparent-background">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h2 class="text-center mb-4">{{ 'login' | translate }}</h2>
@@ -21,11 +21,10 @@
 
       <div class="w-100 d-flex justify-content-center">
         <button mat-raised-button color="primary" type="submit">
-          <i class="bi bi-key me-2"></i>
-          {{ 'login' | translate }}
+          <i class="bi bi-key me-2 just-white"></i>
+          <span class="just-white fw-semibold">{{ 'login' | translate }}</span>
         </button>
       </div>
     </form>
   </div>
 </div>
-
