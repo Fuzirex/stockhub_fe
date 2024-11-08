@@ -1,0 +1,26 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  height: 3rem;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo {
+  height: 30px;
+  margin-right: 15px;
+}
+
+.footer-message {
+  display: contents;
+  font-size: 14px;
+}

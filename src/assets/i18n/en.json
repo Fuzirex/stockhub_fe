@@ -1,0 +1,19 @@
+{
+  "project-title": "StockHub",
+  "unauthorized-access": "Your session has expired or you do not have permission to access this system, please login again.",
+  "loading": "Loading",
+  "cnpj": "CNPJ",
+  "password": "Password",
+  "login": "Login",
+  "footer-message": "StockHub, simplifying inventory management to accelerate your business",
+
+  "validations": {
+    "invalidLegalNumber": "Invalid legal number",
+    "required": "Required field"
+  },
+
+  "headers": {
+    "login": "Access StockHub",
+    "stock": "Stock"
+  }
+}

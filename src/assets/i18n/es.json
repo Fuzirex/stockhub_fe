@@ -1,0 +1,19 @@
+{
+  "project-title": "StockHub",
+  "unauthorized-access": "Su sesión ha expirado o no tiene permiso para acceder a este sistema, inicie sesión nuevamente.",
+  "loading": "Cargando",
+  "cnpj": "CNPJ",
+  "password": "Contraseña",
+  "login": "Entrar",
+  "footer-message": "StockHub, simplificando la gestión de inventarios para acelerar tu negocio",
+
+  "validations": {
+    "invalidLegalNumber": "Número de identidad inválido",
+    "required": "Campo requerido"
+  },
+
+  "headers": {
+    "login": "Acceder al StockHub",
+    "stock": "Estoque"
+  }
+}
