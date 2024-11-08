@@ -21,6 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import {MatTableModule} from "@angular/material/table";
 import { HeaderComponent } from './components/header/header.component';
 import { StockComponent } from './components/stock/stock.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import {SubItemComponent} from "./components/navbar/sub-item/sub-item.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { StockComponent } from './components/stock/stock.component';
     LoginComponent,
     FooterComponent,
     HeaderComponent,
-    StockComponent
+    StockComponent,
+    NavbarComponent,
+    SubItemComponent
   ],
   imports: [
     TranslateModule.forRoot({

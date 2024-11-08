@@ -1,0 +1,54 @@
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <i [ngClass]="collapsed ? 'bi bi-chevron-double-left' : 'bi bi-list'" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="scrollwrap scrollwrap_delayed">
+    <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data of navData">
+        <a
+          class="sidenav-nav-link"
+          [ngClass]="getActiveClass(data)"
+          *ngIf="data.items && data.items.length > 0"
+          (click)="handleClick(data)">
+          <i class="sidenav-link-icon" [class]="data.icon"></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+            {{ data.label | translate }}
+          </span>
+          <i
+            *ngIf="data.items && collapsed"
+            class="menu-collapse-icon"
+            [ngClass]="!data.expanded ? 'bi-chevron-compact-right' : 'bi bi-chevron-compact-down'">
+          </i>
+        </a>
+
+        <a
+          class="sidenav-nav-link"
+          *ngIf="!data.items || (data.items && data.items.length === 0)"
+          (click)="onNavigate(data)"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+
+          <i class="sidenav-link-icon" [class]="data.icon"></i>
+
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+            {{ data.label | translate }}
+          </span>
+        </a>
+
+        <div *ngIf="collapsed && data.items && data.items.length > 0">
+          <lib-sub-item
+            [data]="data"
+            [collapsed]="collapsed"
+            [multiple]="multiple"
+            [expanded]="data.expanded"
+            (closeSidenav)="closeSidenav()">
+          </lib-sub-item>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+</div>
