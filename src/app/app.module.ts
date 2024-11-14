@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -23,6 +23,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { StockComponent } from './components/stock/stock.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {SubItemComponent} from "./components/navbar/sub-item/sub-item.component";
+import {DialogGenericComponent} from "./components/dialogs/dialog-generic/dialog-generic.component";
+import {DialogConfirmComponent} from "./components/dialogs/dialog-confirm/dialog-confirm.component";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatDialogModule} from "@angular/material/dialog";
+import {SecurityService} from "./services/security/security.service";
+import {DealerService} from "./services/dealer/dealer.service";
+import {HttpRequestInterceptor} from "./services/interceptor/http-request-interceptor";
 
 @NgModule({
   declarations: [
@@ -32,7 +39,9 @@ import {SubItemComponent} from "./components/navbar/sub-item/sub-item.component"
     HeaderComponent,
     StockComponent,
     NavbarComponent,
-    SubItemComponent
+    SubItemComponent,
+    DialogGenericComponent,
+    DialogConfirmComponent
   ],
   imports: [
     TranslateModule.forRoot({
@@ -53,7 +62,9 @@ import {SubItemComponent} from "./components/navbar/sub-item/sub-item.component"
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatDividerModule,
+    MatDialogModule
   ],
   providers: [
     {
@@ -63,11 +74,19 @@ import {SubItemComponent} from "./components/navbar/sub-item/sub-item.component"
       multi: true
     },
     {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptor,
+      multi: true
+    },
+    {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {appearance: 'outline', floatLabel: 'auto'}
     },
+    HttpRequestInterceptor,
     InitService,
-    ContextService
+    ContextService,
+    SecurityService,
+    DealerService
   ],
   bootstrap: [AppComponent]
 })

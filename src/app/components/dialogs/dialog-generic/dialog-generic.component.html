@@ -1,0 +1,13 @@
+<h1 mat-dialog-title align="center" class="fs-5 mb-2">{{ title | translate }}</h1>
+<mat-divider></mat-divider>
+
+<div mat-dialog-content>
+  <h6>{{ message | translate}}</h6>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-raised-button color="warn" (click)="confirm()">
+    <i class="bi bi-hand-thumbs-up me-2 just-white"></i>
+    <span class="just-white fw-semibold">{{ 'confirm' | translate }}</span>
+  </button>
+</div>

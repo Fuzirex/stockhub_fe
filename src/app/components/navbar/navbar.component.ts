@@ -1,7 +1,8 @@
-import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Navbar} from "../../classes/navbar/navbar";
 import {fade} from "../animations/fade";
+import {ContextService} from "../../services/context/context.service";
 
 @Component({
   selector: 'app-navbar',
@@ -9,29 +10,8 @@ import {fade} from "../animations/fade";
   styleUrls: ['./navbar.component.scss'],
   animations: [fade]
 })
-export class NavbarComponent  implements OnInit {
-  navData: Navbar[] = [
-    {
-      routeLink: 'login',
-      icon: 'bi bi-key',
-      label: 'login',
-      items: []
-    },
-    {
-      routeLink: 'stock',
-      icon: 'bi bi-boxes',
-      label: 'stock',
-      items: []
-    },
-    {
-      routeLink: 'test',
-      icon: 'bi bi-xbox',
-      label: 'test',
-      items: []
-    }
-  ];
-
-  @Output() onClick: EventEmitter<Navbar> = new EventEmitter();
+export class NavbarComponent implements OnInit {
+  @Input() navData: Navbar[] = [];
 
   collapsed = false;
   screenWidth = 0;
@@ -44,7 +24,9 @@ export class NavbarComponent  implements OnInit {
       this.collapsed = false;
   }
 
-  constructor(public router: Router) {}
+  constructor(public router: Router,
+              private contextService: ContextService) {
+  }
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
@@ -79,8 +61,24 @@ export class NavbarComponent  implements OnInit {
 
   onNavigate(data: Navbar) {
     this.shrinkItems(data);
-    this.onClick.emit(data);
-    this.router.navigateByUrl(`${data.routeLink}`);
-    if (this.collapsed && !this.multiple) this.closeSidenav();
+
+    if (data.routeLink == 'logout')
+      this.logout();
+    else {
+      this.router.navigateByUrl(`${data.routeLink}`);
+      if (this.collapsed && !this.multiple) this.closeSidenav();
+    }
   }
+
+  logout() {
+    this.contextService.openConfirmationModal('warning', 'confirmations.logout-confirm')
+      ?.afterClosed().subscribe(exitParams => {
+      if (exitParams['accepted']) {
+        this.contextService.clearUserAuthentication();
+        this.router.navigateByUrl('login');
+      }
+    });
+
+  }
+
 }
