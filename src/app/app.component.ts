@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
-import {TranslateService} from "@ngx-translate/core";
 import {filter} from "rxjs";
+import {Navbar} from "./classes/navbar/navbar";
+import {ContextService} from "./services/context/context.service";
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,11 @@ import {filter} from "rxjs";
 })
 export class AppComponent {
 
-  title = 'project-title';
+  title: string = 'project-title';
+  menus: Navbar[] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private contextService: ContextService) {
     this.loadHeaderTitle();
   }
 
@@ -27,7 +30,37 @@ export class AppComponent {
           this.title = 'headers.stock';
           break;
       }
+
+      this.loadAvailableMenus();
     });
+  }
+
+  loadAvailableMenus() {
+    if (this.contextService.getToken()) {
+      this.menus = [
+        {
+          routeLink: 'stock',
+          icon: 'bi bi-boxes',
+          label: 'headers.stock',
+          items: []
+        },
+        {
+          routeLink: 'logout',
+          icon: 'bi bi-door-open',
+          label: 'logout',
+          items: []
+        }
+      ];
+    } else {
+      this.menus = [
+        {
+          routeLink: 'login',
+          icon: 'bi bi-key',
+          label: 'login',
+          items: []
+        }
+      ];
+    }
   }
 
 }

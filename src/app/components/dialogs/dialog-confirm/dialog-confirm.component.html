@@ -1,0 +1,18 @@
+<h1 mat-dialog-title align="center" class="fs-5 mb-2">{{ title | translate }}</h1>
+<mat-divider></mat-divider>
+
+<div mat-dialog-content>
+  <h6>{{ message | translate}}</h6>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-raised-button (click)="refuse()">
+    <i class="bi bi-x-circle"></i>
+    {{ 'refuse' | translate }}
+  </button>
+
+  <button mat-raised-button color="primary" (click)="accept()">
+    <i class="bi bi-check-circle me-2 just-white"></i>
+    <span class="just-white fw-semibold">{{ 'accept' | translate }}</span>
+  </button>
+</div>

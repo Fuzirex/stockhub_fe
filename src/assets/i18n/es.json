@@ -1,11 +1,24 @@
 {
   "project-title": "StockHub",
+  "warning": "¡Atención!",
   "unauthorized-access": "Su sesión ha expirado o no tiene permiso para acceder a este sistema, inicie sesión nuevamente.",
   "loading": "Cargando",
   "cnpj": "CNPJ",
   "password": "Contraseña",
   "login": "Entrar",
+  "logout": "Desconectar",
   "footer-message": "StockHub, simplificando la gestión de inventarios para acelerar tu negocio",
+  "accept": "Aceptar",
+  "refuse": "Rechazar",
+  "confirm": "Ok",
+
+  "exceptions": {
+    "failed-operation": "Ocurrió un error al realizar la operación, intente nuevamente"
+  },
+
+  "confirmations": {
+    "logout-confirm": "¿Realmente quieres desconectarte de este usuario?"
+  },
 
   "validations": {
     "invalidLegalNumber": "Número de identidad inválido",

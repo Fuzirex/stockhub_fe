@@ -1,11 +1,24 @@
 {
   "project-title": "StockHub",
+  "warning": "Warning!",
   "unauthorized-access": "Your session has expired or you do not have permission to access this system, please login again.",
   "loading": "Loading",
   "cnpj": "CNPJ",
   "password": "Password",
   "login": "Login",
+  "logout": "Logout",
   "footer-message": "StockHub, simplifying inventory management to accelerate your business",
+  "accept": "Accept",
+  "refuse": "Refuse",
+  "confirm": "Got it",
+
+  "exceptions": {
+    "failed-operation": "An error occurred while performing the operation, please try again"
+  },
+
+  "confirmations": {
+    "logout-confirm": "Are you sure you want to disconnect from this user?"
+  },
 
   "validations": {
     "invalidLegalNumber": "Invalid legal number",

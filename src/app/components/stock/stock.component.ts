@@ -99,7 +99,9 @@ export class StockComponent {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private contextService: ContextService) {
+    contextService.validateLoggedUser();
   }
 
   onSubmit() {
