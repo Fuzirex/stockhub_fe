@@ -11,9 +11,30 @@
   "accept": "Aceptar",
   "refuse": "Rechazar",
   "confirm": "Ok",
+  "filters": "Filtros",
+  "invoice": "Factura",
+  "product": "Producto",
+  "operation-type-label": "Tipo de Transación",
+  "number": "Número",
+  "emission-period": "Período de Emisión",
+  "type": "Tipo",
+  "model": "Modelo",
+  "item": "Item",
+  "item-code": "Código del item",
+  "commercial-series": "Serie Comercial",
+  "chassis-number": "Chasis",
+  "clear": "Limpiar",
+  "clear-products": "Limpiar Productos",
+  "search": "Buscar",
+  "no-data": "Sin datos",
+  "export": "Exportar",
+  "register-invoice": "Registrar Factura",
+  "transfer": "Transferir",
 
   "exceptions": {
-    "failed-operation": "Ocurrió un error al realizar la operación, intente nuevamente"
+    "failed-operation": "Ocurrió un error al realizar la operación, intente nuevamente",
+    "table-search-error": "Error al realizar la búsqueda, inténtalo de nuevo.",
+    "load-data-error": "No se han podido cargar los valores, vuelva a intentarlo."
   },
 
   "confirmations": {

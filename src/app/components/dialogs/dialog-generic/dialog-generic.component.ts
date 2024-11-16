@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 @Component({
   selector: 'app-dialog-generic',
   templateUrl: './dialog-generic.component.html',
-  styleUrls: ['./dialog-generic.component.css']
+  styleUrls: ['./dialog-generic.component.scss']
 })
 export class DialogGenericComponent implements AfterViewInit {
 

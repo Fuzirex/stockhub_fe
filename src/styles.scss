@@ -29,7 +29,15 @@ $my-app-theme:   mat.define-light-theme((
 }
 
 .round-transparent-background {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
+  background: rgba(255, 255, 255);
+  border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.no-data-message {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgba(236, 236, 236, 0.71);
 }

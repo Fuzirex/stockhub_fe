@@ -11,9 +11,30 @@
   "accept": "Accept",
   "refuse": "Refuse",
   "confirm": "Got it",
+  "filters": "Filters",
+  "invoice": "Invoice",
+  "product": "Product",
+  "operation-type-label": "Transaction Nature",
+  "number": "Number",
+  "emission-period": "Invoide date",
+  "type": "Type",
+  "model": "Model",
+  "item": "Item",
+  "item-code": "Item Code",
+  "commercial-series": "Commercial Series",
+  "chassis-number": "Chassis Number",
+  "clear": "Clear",
+  "clear-products": "Clear Products",
+  "search": "Search",
+  "no-data": "No data",
+  "export": "Export",
+  "register-invoice": "Register Invoice",
+  "transfer": "Transfer",
 
   "exceptions": {
-    "failed-operation": "An error occurred while performing the operation, please try again"
+    "failed-operation": "An error occurred while performing the operation, please try again",
+    "table-search-error": "Error performing search, please try again.",
+    "load-data-error": "Error loading data, please try again."
   },
 
   "confirmations": {

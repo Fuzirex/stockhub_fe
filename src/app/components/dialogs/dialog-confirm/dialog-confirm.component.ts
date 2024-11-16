@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 @Component({
   selector: 'app-dialog-confirm',
   templateUrl: './dialog-confirm.component.html',
-  styleUrls: ['./dialog-confirm.component.css']
+  styleUrls: ['./dialog-confirm.component.scss']
 })
 export class DialogConfirmComponent implements AfterViewInit {
 

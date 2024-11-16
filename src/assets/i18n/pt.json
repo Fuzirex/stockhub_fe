@@ -11,9 +11,30 @@
   "accept": "Aceitar",
   "refuse": "Recusar",
   "confirm": "Ok",
+  "filters": "Filtros",
+  "invoice": "Nota Fiscal",
+  "product": "Produto",
+  "operation-type-label": "Natureza da Operação",
+  "number": "Número",
+  "emission-period": "Período de Emissão",
+  "type": "Tipo",
+  "model": "Modelo",
+  "item": "Item",
+  "item-code": "Código do item",
+  "commercial-series": "Série Comercial",
+  "chassis-number": "Monobloco",
+  "clear": "Limpar",
+  "clear-products": "Limpar Produtos",
+  "search": "Pesquisar",
+  "no-data": "Sem dados",
+  "export": "Exportar",
+  "register-invoice": "Cadastrar Nota",
+  "transfer": "Transferência",
 
   "exceptions": {
-    "failed-operation": "Ocorreu um erro ao realizar a operação, por favor tente novamente"
+    "failed-operation": "Ocorreu um erro ao realizar a operação, por favor tente novamente",
+    "table-search-error": "Erro ao realizar a pesquisa, por favor tente novamente.",
+    "load-data-error": "Erro ao carregar valores, por favor tente novamente."
   },
 
   "confirmations": {
