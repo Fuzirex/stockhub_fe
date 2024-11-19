@@ -1,0 +1,7 @@
+<div class="round-transparent-background">
+  <app-invoice-history-filter (onSearch)="invoiceHistoryTableComponent.loadInvoiceHistory($event)"
+                              (onClear)="invoiceHistoryTableComponent.clear()"></app-invoice-history-filter>
+
+  <app-invoice-history-table (onExport)="invoiceHistoryFilterComponent.exportInvoiceHistoryReport()"
+                             (onPaginationChange)="invoiceHistoryFilterComponent.search($event.page, $event.pageSize)"></app-invoice-history-table>
+</div>

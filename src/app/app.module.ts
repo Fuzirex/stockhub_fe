@@ -36,6 +36,11 @@ import {StockTableComponent} from "./components/stock/stock-table/stock-table.co
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSelectModule} from "@angular/material/select";
 import {ProductTypeService} from "./services/product-type/product-type.service";
+import { InvoiceHistoryComponent } from './components/invoice-history/invoice-history.component';
+import { InvoiceHistoryFilterComponent } from './components/invoice-history/invoice-history-filter/invoice-history-filter.component';
+import { InvoiceHistoryTableComponent } from './components/invoice-history/invoice-history-table/invoice-history-table.component';
+import {UtilsService} from "./services/utils/utils.service";
+import {InvoiceService} from "./services/invoice/invoice.service";
 
 @NgModule({
   declarations: [
@@ -50,7 +55,10 @@ import {ProductTypeService} from "./services/product-type/product-type.service";
     DialogConfirmComponent,
     StockComponent,
     StockFilterComponent,
-    StockTableComponent
+    StockTableComponent,
+    InvoiceHistoryComponent,
+    InvoiceHistoryFilterComponent,
+    InvoiceHistoryTableComponent
   ],
   imports: [
     TranslateModule.forRoot({
@@ -99,7 +107,9 @@ import {ProductTypeService} from "./services/product-type/product-type.service";
     SecurityService,
     DealerService,
     StockService,
-    ProductTypeService
+    ProductTypeService,
+    UtilsService,
+    InvoiceService
   ],
   bootstrap: [AppComponent]
 })
