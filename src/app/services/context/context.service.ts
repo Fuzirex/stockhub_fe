@@ -114,4 +114,13 @@ export class ContextService {
     sessionStorage.setItem('dealer', JSON.stringify(dealer));
   }
 
+  setOperationType(operation: string) {
+    sessionStorage.setItem('operationType', operation);
+  }
+
+  getOperationType(): string {
+    let operation = sessionStorage.getItem('operationType');
+    return operation ? operation : '1';
+  }
+
 }

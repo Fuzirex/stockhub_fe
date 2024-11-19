@@ -5,7 +5,9 @@ export const environment = {
     baseUrl: 'http://localhost:8090/stockhub-api',
     paths: {
       login: '/authentication/login',
-      getDealer: '/dealer/{cnpj}'
+      getDealer: '/dealer/{cnpj}',
+      getStock: '/stock',
+      getAllProductType: '/product-type'
     }
   },
 

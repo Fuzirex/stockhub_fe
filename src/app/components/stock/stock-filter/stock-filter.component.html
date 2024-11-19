@@ -1,0 +1,48 @@
+<div class="col-sm-12 pb-3">
+  <legend class="pt-2 ps-3">{{ 'filters' | translate }}</legend>
+  <mat-divider class="mb-4"></mat-divider>
+
+  <form [formGroup]="formGroup" class="col-sm-12 row w-auto px-3">
+    <mat-form-field appearance="outline" floatLabel="always" class="col-sm-3 my-2">
+      <mat-label>{{ 'chassis-number' | translate }}</mat-label>
+      <input matInput type="text" formControlName="chassisNumber" oninput="this.value = this.value.toUpperCase()">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always" class="col-sm-3 my-2">
+      <mat-label>{{ 'commercial-series' | translate }}</mat-label>
+      <input matInput type="text" formControlName="commercialSeries" oninput="this.value = this.value.toUpperCase()">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always" class="col-sm-3 my-2">
+      <mat-label>{{ 'model' | translate }}</mat-label>
+      <input matInput type="text" formControlName="productModel" oninput="this.value = this.value.toUpperCase()">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always" class="col-sm-3 my-2">
+      <mat-label>{{ 'item-code' | translate }}</mat-label>
+      <input matInput type="text" formControlName="itemCode" oninput="this.value = this.value.toUpperCase()">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always" class="col-sm-6">
+      <mat-label>{{ 'type' | translate }}</mat-label>
+      <mat-select formControlName="productType">
+        <mat-option></mat-option>
+        <mat-option *ngFor="let type of productTypeList" [value]="type.id">
+          {{ type.id }} - {{ type.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="col-sm-12">
+      <button mat-raised-button color="primary" class="float-end mx-2" (click)="search()">
+        <i class="bi bi-search me-2 just-white"></i>
+        <span class="just-white fw-semibold">{{ 'search' | translate }}</span>
+      </button>
+
+      <button mat-raised-button class="float-end mx-2" (click)="clear()">
+        <i class="bi bi-trash3 me-2"></i>
+        <span>{{ 'clear' | translate }}</span>
+      </button>
+    </div>
+  </form>
+</div>

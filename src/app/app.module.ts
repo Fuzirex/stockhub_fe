@@ -30,6 +30,12 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {SecurityService} from "./services/security/security.service";
 import {DealerService} from "./services/dealer/dealer.service";
 import {HttpRequestInterceptor} from "./services/interceptor/http-request-interceptor";
+import {StockService} from "./services/stock/stock.service";
+import {StockFilterComponent} from "./components/stock/stock-filter/stock-filter.component";
+import {StockTableComponent} from "./components/stock/stock-table/stock-table.component";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSelectModule} from "@angular/material/select";
+import {ProductTypeService} from "./services/product-type/product-type.service";
 
 @NgModule({
   declarations: [
@@ -41,7 +47,10 @@ import {HttpRequestInterceptor} from "./services/interceptor/http-request-interc
     NavbarComponent,
     SubItemComponent,
     DialogGenericComponent,
-    DialogConfirmComponent
+    DialogConfirmComponent,
+    StockComponent,
+    StockFilterComponent,
+    StockTableComponent
   ],
   imports: [
     TranslateModule.forRoot({
@@ -64,7 +73,9 @@ import {HttpRequestInterceptor} from "./services/interceptor/http-request-interc
     MatButtonModule,
     MatTableModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    MatSelectModule
   ],
   providers: [
     {
@@ -86,7 +97,9 @@ import {HttpRequestInterceptor} from "./services/interceptor/http-request-interc
     InitService,
     ContextService,
     SecurityService,
-    DealerService
+    DealerService,
+    StockService,
+    ProductTypeService
   ],
   bootstrap: [AppComponent]
 })
