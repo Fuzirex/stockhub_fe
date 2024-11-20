@@ -17,6 +17,7 @@
   "operation-type-label": "Transaction Nature",
   "operation": "Operation",
   "number": "Number",
+  "series": "Series",
   "emission-period": "Invoide date",
   "type": "Type",
   "model": "Model",
@@ -34,11 +35,26 @@
   "emission-date": "Emission Date",
   "return": "Return",
   "invoice-number": "Invoice Number",
+  "document-type": "Document Type",
+  "legal-number": "Legal Number",
+  "currency-type": "Currency",
+  "value": "Value",
+  "name": "Name",
+  "country": "Country",
+  "region": "Region",
+  "city": "City",
+  "address": "Address",
+  "complement": "Complement",
+  "destination-customer": "Destination/Customer",
+  "go-back": "Go back",
+  "send": "Send",
+  "selected-products": "Selected Products",
 
   "exceptions": {
     "failed-operation": "An error occurred while performing the operation, please try again",
     "table-search-error": "Error performing search, please try again.",
-    "load-data-error": "Error loading data, please try again."
+    "load-data-error": "Error loading data, please try again.",
+    "mandatory-fields-not-fulfilled": "Mandatory fields not fulfilled."
   },
 
   "confirmations": {
@@ -53,7 +69,10 @@
   "headers": {
     "login": "Access StockHub",
     "stock": "Stock",
-    "invoice-history": "Invoice History"
+    "invoice-history": "Invoice History",
+    "invoice-entry-sale": "Sale Invoice",
+    "invoice-entry-return": "Return Invoice",
+    "invoice-entry-transfer": "Transfer Invoice"
   },
 
   "period": {
@@ -63,5 +82,10 @@
     "last-120-days": "Last 120 days",
     "last-1-year": "Last 1 year",
     "last-2-years": "Last 2 years"
+  },
+
+  "placeholders": {
+    "address": "e.g.: Flower Street, Downtown, No. 123",
+    "complement": "e.g.: Apt 45"
   }
 }

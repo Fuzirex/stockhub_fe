@@ -1,9 +1,9 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {LoginComponent} from './components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
@@ -16,12 +16,11 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {InitService} from "./services/init/init.service";
 import {ContextService} from "./services/context/context.service";
 import {NgxSpinnerModule} from "ngx-spinner";
-import {MatIconModule} from "@angular/material/icon";
-import { FooterComponent } from './components/footer/footer.component';
+import {FooterComponent} from './components/footer/footer.component';
 import {MatTableModule} from "@angular/material/table";
-import { HeaderComponent } from './components/header/header.component';
-import { StockComponent } from './components/stock/stock.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import {HeaderComponent} from './components/header/header.component';
+import {StockComponent} from './components/stock/stock.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 import {SubItemComponent} from "./components/navbar/sub-item/sub-item.component";
 import {DialogGenericComponent} from "./components/dialogs/dialog-generic/dialog-generic.component";
 import {DialogConfirmComponent} from "./components/dialogs/dialog-confirm/dialog-confirm.component";
@@ -36,11 +35,27 @@ import {StockTableComponent} from "./components/stock/stock-table/stock-table.co
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSelectModule} from "@angular/material/select";
 import {ProductTypeService} from "./services/product-type/product-type.service";
-import { InvoiceHistoryComponent } from './components/invoice-history/invoice-history.component';
-import { InvoiceHistoryFilterComponent } from './components/invoice-history/invoice-history-filter/invoice-history-filter.component';
-import { InvoiceHistoryTableComponent } from './components/invoice-history/invoice-history-table/invoice-history-table.component';
+import {InvoiceHistoryComponent} from './components/invoice-history/invoice-history.component';
+import {
+  InvoiceHistoryFilterComponent
+} from './components/invoice-history/invoice-history-filter/invoice-history-filter.component';
+import {
+  InvoiceHistoryTableComponent
+} from './components/invoice-history/invoice-history-table/invoice-history-table.component';
 import {UtilsService} from "./services/utils/utils.service";
 import {InvoiceService} from "./services/invoice/invoice.service";
+import {InvoiceEntryComponent} from './components/invoice-entry/invoice-entry.component';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from "@angular-material-components/datetime-picker";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
+import {LocationService} from "./services/location/location.service";
+import {CurrencyMaskModule} from "ng2-currency-mask";
+import { InvoiceEntryProductTableComponent } from './components/invoice-entry/invoice-entry-product-table/invoice-entry-product-table.component';
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -58,7 +73,9 @@ import {InvoiceService} from "./services/invoice/invoice.service";
     StockTableComponent,
     InvoiceHistoryComponent,
     InvoiceHistoryFilterComponent,
-    InvoiceHistoryTableComponent
+    InvoiceHistoryTableComponent,
+    InvoiceEntryComponent,
+    InvoiceEntryProductTableComponent
   ],
   imports: [
     TranslateModule.forRoot({
@@ -83,7 +100,15 @@ import {InvoiceService} from "./services/invoice/invoice.service";
     MatDividerModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule,
+    MatDatepickerModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    CurrencyMaskModule,
+    MatSortModule
   ],
   providers: [
     {
@@ -101,6 +126,7 @@ import {InvoiceService} from "./services/invoice/invoice.service";
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {appearance: 'outline', floatLabel: 'auto'}
     },
+    provideNgxMask(),
     HttpRequestInterceptor,
     InitService,
     ContextService,
@@ -109,7 +135,8 @@ import {InvoiceService} from "./services/invoice/invoice.service";
     StockService,
     ProductTypeService,
     UtilsService,
-    InvoiceService
+    InvoiceService,
+    LocationService
   ],
   bootstrap: [AppComponent]
 })

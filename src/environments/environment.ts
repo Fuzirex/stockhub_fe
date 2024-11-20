@@ -10,6 +10,9 @@ export const environment = {
       getAllProductType: '/product-type',
       getInvoiceHistory: '/invoice/history',
       getInvoiceOperations: '/invoice/operations',
+      getCountries: '/location/countries',
+      getStates: '/location/states',
+      getCitiesByState: '/location/cities-by-state/{state}',
     }
   },
 

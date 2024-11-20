@@ -17,6 +17,7 @@
   "operation-type-label": "Tipo de Transación",
   "operation": "Operación",
   "number": "Número",
+  "series": "Serie",
   "emission-period": "Período de Emisión",
   "type": "Tipo",
   "model": "Modelo",
@@ -34,11 +35,27 @@
   "emission-date": "Fecha de Emisión",
   "return": "Devolución",
   "invoice-number": "Número da Factura",
+  "document-type": "Tipo de Documento",
+  "legal-number": "Número de Identidad",
+  "currency-type": "Moneda",
+  "value": "Valor",
+  "name": "Nombre",
+  "country": "País",
+  "region": "Región",
+  "city": "Ciudad",
+  "address": "Dirección",
+  "complement": "Complemento",
+  "destination-customer": "Destinatario/Cliente",
+  "go-back": "Volver",
+  "send": "Enviar",
+  "selected-products": "Productos Seleccionados",
+
 
   "exceptions": {
     "failed-operation": "Ocurrió un error al realizar la operación, intente nuevamente",
     "table-search-error": "Error al realizar la búsqueda, inténtalo de nuevo.",
-    "load-data-error": "No se han podido cargar los valores, vuelva a intentarlo."
+    "load-data-error": "No se han podido cargar los valores, vuelva a intentarlo.",
+    "mandatory-fields-not-fulfilled": "Campos obligatorios no rellenados."
   },
 
   "confirmations": {
@@ -53,7 +70,10 @@
   "headers": {
     "login": "Acceder al StockHub",
     "stock": "Estoque",
-    "invoice-history": "Historial de Ventas"
+    "invoice-history": "Historial de Ventas",
+    "invoice-entry-sale": "Informe de Ventas",
+    "invoice-entry-return": "Informe de Devolución",
+    "invoice-entry-transfer": "Informe de Transferencia"
   },
 
   "period": {
@@ -63,5 +83,10 @@
     "last-120-days": "Últimos 120 dias",
     "last-1-year": "Último 1 ano",
     "last-2-years": "Últimos 2 anos"
+  },
+
+  "placeholders": {
+    "address": "Ej.: Calle Flores, Barrio Centro, Nº 123",
+    "complement": "Ej.: Depto 45"
   }
 }

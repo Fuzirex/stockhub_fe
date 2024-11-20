@@ -11,6 +11,7 @@ import {PageSpring} from "../../../classes/common/page-spring";
 import {Pagination} from "../../../classes/common/pagination";
 import {StockRequestDTO} from "../../../classes/request/stock-request-dto";
 import {PageEvent} from "@angular/material/paginator";
+import {OperationType} from "../../../classes/type/operation-type";
 
 @Component({
   selector: 'app-stock-table',
@@ -76,18 +77,18 @@ export class StockTableComponent implements AfterViewInit {
   }
 
   registerInvoice() {
-    const selectedProducts: Array<StockResponseDTO> = this.stockList?.data.filter(prod => prod.checked);
-    this.redirectToInvoiceEntry(1, selectedProducts);
+    const selectedProducts: StockResponseDTO[] = this.stockList?.data.filter(prod => prod.checked);
+    this.redirectToInvoiceEntry(OperationType.SALE, selectedProducts);
   }
 
   transfer() {
-    const selectedProducts: Array<StockResponseDTO> = this.stockList?.data.filter(prod => prod.checked);
-    this.redirectToInvoiceEntry(3, selectedProducts);
+    const selectedProducts: StockResponseDTO[] = this.stockList?.data.filter(prod => prod.checked);
+    this.redirectToInvoiceEntry(OperationType.TRANSFER, selectedProducts);
   }
 
-  redirectToInvoiceEntry(operationType: number, selectedProducts: Array<StockResponseDTO>) {
-    this.contextService.setOperationType('5');
-    this.router.navigate(['invoiceentry'], {
+  redirectToInvoiceEntry(operationType: OperationType, selectedProducts: StockResponseDTO[]) {
+    this.contextService.setOperationType(operationType);
+    this.router.navigate(['invoice-entry'], {
       state: {
         selectedProducts: selectedProducts,
         operationType: operationType

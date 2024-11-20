@@ -3,6 +3,7 @@ import {NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs";
 import {Navbar} from "./classes/navbar/navbar";
 import {ContextService} from "./services/context/context.service";
+import {OperationType} from "./classes/type/operation-type";
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,17 @@ export class AppComponent {
 
         case '/invoice-history':
           this.title = 'headers.invoice-history';
+          break;
+
+        case '/invoice-entry':
+          let operationType: OperationType = this.contextService.getOperationType();
+
+          if (operationType == OperationType.TRANSFER)
+            this.title = 'headers.invoice-entry-transfer';
+          else if (operationType == OperationType.RETURN)
+            this.title = 'headers.invoice-entry-return';
+          else
+            this.title = 'headers.invoice-entry-sale';
           break;
       }
 
