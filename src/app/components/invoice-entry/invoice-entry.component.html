@@ -1,5 +1,5 @@
-<!-- INVOICE FIELDSET -->
 <div class="round-transparent-background">
+  <!-- INVOICE INFO -->
   <div class="col-sm-12">
     <legend class="pt-2 ps-3">{{ 'invoice' | translate }}</legend>
     <mat-divider class="mb-3"></mat-divider>
@@ -61,7 +61,7 @@
     </form>
   </div>
 
-  <!-- DESTINATION FIELDSET FOR SALE -->
+  <!-- DESTINATION INFO FOR SALE -->
   <div class="col-sm-12" *ngIf="isOperationTypeSales()">
     <legend class="pt-2 ps-3">{{ 'destination-customer' | translate }}</legend>
     <mat-divider class="mb-3"></mat-divider>
@@ -156,6 +156,28 @@
     </form>
   </div>
 
+  <!-- DESTINATION INFO FOR TRANSFER -->
+  <div class="col-sm-12" *ngIf="isOperationTypeTransfer()">
+    <legend class="pt-2 ps-3">{{ 'destination-customer' | translate }}</legend>
+    <mat-divider class="mb-3"></mat-divider>
+
+    <form [formGroup]="formGroup" class="col-sm-12 row w-auto px-3">
+      <mat-form-field class="col-sm-6 my-2">
+        <mat-label>{{ 'dealer' | translate }}</mat-label>
+        <mat-select formControlName="dealerToTransfer">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let d of dealerListToTransfer" [value]="d.cnpj">
+            {{ d.name }} - {{ d.cityDesc }} - {{ d.cnpj }}
+          </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="formGroup.get('dealerToTransfer')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+
   <div class="col-sm-12 p-3">
     <form class="col-sm-12 row w-auto">
       <div class="col-sm-12">
@@ -177,27 +199,5 @@
     </form>
   </div>
 </div>
-
-<!-- DESTINATION FIELDSET FOR TRANSFER -->
-<!--<fieldset class="col-sm-12 p-3 my-3 fieldset-border" *ngIf="isOperationTypeTransfer()">
-  <legend>{{ 'destination-customer' | translate }}</legend>
-  <mat-divider class="mb-3"></mat-divider>
-
-  <form [formGroup]="formGroup" class="col-sm-12 row w-auto">
-    <mat-form-field class="col-sm-6 my-2">
-      <mat-label>{{ 'dealer' | translate }}</mat-label>
-      <mat-select formControlName="dealerToTransfer">
-        <mat-option></mat-option>
-        <mat-option *ngFor="let d of dealerListToTransfer" [value]="d.codigoRevJDE">
-          {{ d.name }} - {{ d.address.city }} - {{ d.codigoRevJDE }}
-        </mat-option>
-      </mat-select>
-
-      <mat-error *ngIf="formGroup.get('dealerToTransfer')?.hasError('required')">
-        {{ 'validations.required' | translate }}
-      </mat-error>
-    </mat-form-field>
-  </form>
-</fieldset>-->
 
 <app-invoice-entry-product-table [selectedProducts]="selectedProducts"></app-invoice-entry-product-table>

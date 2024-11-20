@@ -6,6 +6,7 @@ export const environment = {
     paths: {
       login: '/authentication/login',
       getDealer: '/dealer/{cnpj}',
+      getDealersToTransfer: '/dealer/to-transfer',
       getStock: '/stock/filter',
       getAllProductType: '/product-type',
       getInvoiceHistory: '/invoice/history',

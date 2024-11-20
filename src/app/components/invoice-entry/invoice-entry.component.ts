@@ -15,6 +15,7 @@ import {StockResponseDTO} from "../../classes/response/stock-response-dto";
 import {OperationType} from "../../classes/type/operation-type";
 import {CustomValidators} from "../../classes/validators/custom-validators";
 import {InvoiceEntryProductTableComponent} from "./invoice-entry-product-table/invoice-entry-product-table.component";
+import {DealerService} from "../../services/dealer/dealer.service";
 
 @Component({
   selector: 'app-invoice-entry',
@@ -28,12 +29,12 @@ export class InvoiceEntryComponent implements OnInit {
 
   formGroup!: UntypedFormGroup;
   operationType!: OperationType;
-  selectedProducts: StockResponseDTO[] = [];
+  selectedProducts!: StockResponseDTO[];
 
-  dealerListToTransfer: DealerResponseDTO[] = [];
-  countryList: LocationResponseDTO[] = [];
-  regionList: LocationResponseDTO[] = [];
-  cityList: LocationResponseDTO[] = [];
+  dealerListToTransfer!: DealerResponseDTO[];
+  countryList!: LocationResponseDTO[];
+  regionList!: LocationResponseDTO[];
+  cityList!: LocationResponseDTO[];
 
   constructor(private formBuilder: UntypedFormBuilder,
               private spinner: NgxSpinnerService,
@@ -41,7 +42,8 @@ export class InvoiceEntryComponent implements OnInit {
               private contextService: ContextService,
               private invoiceService: InvoiceService,
               private utilsService: UtilsService,
-              private router: Router) {
+              private router: Router,
+              private dealerService: DealerService) {
     this.loadValuesFromRedirect();
   }
 
@@ -55,7 +57,6 @@ export class InvoiceEntryComponent implements OnInit {
     let operation: OperationType = this.router.getCurrentNavigation()?.extras?.state?.['operationType'];
     let prods: StockResponseDTO[] = this.router.getCurrentNavigation()?.extras?.state?.['selectedProducts'];
 
-    console.log('operation: ', operation);
     if (operation)
       this.operationType = operation;
     else
@@ -252,16 +253,17 @@ export class InvoiceEntryComponent implements OnInit {
   }
 
   loadDealersToTransfer() {
-    /*if (this.isOperationTypeTransfer()) {
+    if (this.isOperationTypeTransfer()) {
       this.spinner.show();
-
-      let currentDealer: Dealer = this.contextService.getCurrentDealer();
-      this.dealerService.getDealersWithSameBrandAndMarket(currentDealer.dealerNumber).subscribe({
-        next: (result: DataWrapper) => this.dealerListToTransfer = result.data,
+      this.dealerService.getDealersToTransfer().subscribe({
+        next: (result: DealerResponseDTO[]) => {
+          let currentDealer = this.contextService.getDealer();
+          this.dealerListToTransfer = result.filter(d => d.cnpj != currentDealer.cnpj);
+        },
         error: (error: any) => this.contextService.openGenericDialog('warning', 'exceptions.load-data-error', error),
         complete: () => this.spinner.hide()
       });
-    }*/
+    }
   }
 
   loadCountries() {

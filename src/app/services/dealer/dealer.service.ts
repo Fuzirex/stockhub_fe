@@ -16,4 +16,10 @@ export class DealerService {
     const url = environment.stockhubApi.baseUrl + environment.stockhubApi.paths.getDealer.replace('{cnpj}', cnpj);
     return this.httpClient.get<DealerResponseDTO>(url);
   }
+
+  getDealersToTransfer(): Observable<DealerResponseDTO[]> {
+    const url = environment.stockhubApi.baseUrl + environment.stockhubApi.paths.getDealersToTransfer;
+    return this.httpClient.get<DealerResponseDTO[]>(url);
+  }
+
 }

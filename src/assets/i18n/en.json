@@ -49,6 +49,7 @@
   "go-back": "Go back",
   "send": "Send",
   "selected-products": "Selected Products",
+  "dealer": "Dealer",
 
   "exceptions": {
     "failed-operation": "An error occurred while performing the operation, please try again",

@@ -81,7 +81,7 @@ export class InvoiceHistoryTableComponent implements AfterViewInit {
       });
 
       this.contextService.setOperationType(OperationType.RETURN);
-      this.router.navigate(['invoiceentry'], {
+      this.router.navigate(['invoice-entry'], {
         state: {
           selectedProducts: prods,
           operationType: OperationType.RETURN

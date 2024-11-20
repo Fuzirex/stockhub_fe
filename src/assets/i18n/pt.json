@@ -49,6 +49,7 @@
   "go-back": "Voltar",
   "send": "Enviar",
   "selected-products": "Produtos Selecionados",
+  "dealer": "Concessionária",
 
   "exceptions": {
     "failed-operation": "Ocorreu um erro ao realizar a operação, por favor tente novamente",
