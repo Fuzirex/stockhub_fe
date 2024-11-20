@@ -15,12 +15,13 @@
   "invoice": "Factura",
   "product": "Producto",
   "operation-type-label": "Tipo de Transación",
+  "operation": "Operación",
   "number": "Número",
   "emission-period": "Período de Emisión",
   "type": "Tipo",
   "model": "Modelo",
   "item": "Item",
-  "item-code": "Código del item",
+  "item-code": "Código del Item",
   "commercial-series": "Serie Comercial",
   "chassis-number": "Chasis",
   "clear": "Limpiar",
@@ -30,6 +31,9 @@
   "export": "Exportar",
   "register-invoice": "Registrar Factura",
   "transfer": "Transferir",
+  "emission-date": "Fecha de Emisión",
+  "return": "Devolución",
+  "invoice-number": "Número da Factura",
 
   "exceptions": {
     "failed-operation": "Ocurrió un error al realizar la operación, intente nuevamente",
@@ -48,6 +52,16 @@
 
   "headers": {
     "login": "Acceder al StockHub",
-    "stock": "Estoque"
+    "stock": "Estoque",
+    "invoice-history": "Historial de Ventas"
+  },
+
+  "period": {
+    "last-7-days": "Últimos 7 dias",
+    "last-30-days": "Últimos 30 dias",
+    "last-90-days": "Últimos 90 dias",
+    "last-120-days": "Últimos 120 dias",
+    "last-1-year": "Último 1 ano",
+    "last-2-years": "Últimos 2 anos"
   }
 }

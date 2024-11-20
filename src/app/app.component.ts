@@ -29,6 +29,10 @@ export class AppComponent {
         case '/stock':
           this.title = 'headers.stock';
           break;
+
+        case '/invoice-history':
+          this.title = 'headers.invoice-history';
+          break;
       }
 
       this.loadAvailableMenus();
@@ -42,6 +46,12 @@ export class AppComponent {
           routeLink: 'stock',
           icon: 'bi bi-boxes',
           label: 'headers.stock',
+          items: []
+        },
+        {
+          routeLink: 'invoice-history',
+          icon: 'bi bi-receipt-cutoff',
+          label: 'headers.invoice-history',
           items: []
         },
         {

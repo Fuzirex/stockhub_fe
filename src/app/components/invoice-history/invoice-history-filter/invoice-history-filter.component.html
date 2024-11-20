@@ -3,22 +3,46 @@
   <mat-divider class="mb-4"></mat-divider>
 
   <form [formGroup]="formGroup" class="col-sm-12 row w-auto px-3">
-    <mat-form-field class="col-sm-3 my-2">
+    <mat-form-field class="col-sm-4">
+      <mat-label>{{ 'invoice-number' | translate }}</mat-label>
+      <input matInput type="text" formControlName="invoiceNumber" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+    </mat-form-field>
+
+    <mat-form-field class="col-sm-4">
+      <mat-label>{{ 'operation-type-label' | translate }}</mat-label>
+      <mat-select formControlName="operationType">
+        <mat-option></mat-option>
+        <mat-option *ngFor="let operation of operationTypeList" [value]="operation.id">
+          {{ operation.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="col-sm-4">
+      <mat-label>{{ 'emission-period' | translate }}</mat-label>
+      <mat-select formControlName="emissionPeriod">
+        <mat-option *ngFor="let period of emissionPeriodList" [value]="period">
+          {{ period.translateCode | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="col-sm-3">
       <mat-label>{{ 'chassis-number' | translate }}</mat-label>
       <input matInput type="text" formControlName="chassisNumber" oninput="this.value = this.value.toUpperCase()">
     </mat-form-field>
 
-    <mat-form-field class="col-sm-3 my-2">
+    <mat-form-field class="col-sm-3">
       <mat-label>{{ 'commercial-series' | translate }}</mat-label>
       <input matInput type="text" formControlName="commercialSeries" oninput="this.value = this.value.toUpperCase()">
     </mat-form-field>
 
-    <mat-form-field class="col-sm-3 my-2">
+    <mat-form-field class="col-sm-3">
       <mat-label>{{ 'model' | translate }}</mat-label>
       <input matInput type="text" formControlName="productModel" oninput="this.value = this.value.toUpperCase()">
     </mat-form-field>
 
-    <mat-form-field class="col-sm-3 my-2">
+    <mat-form-field class="col-sm-3">
       <mat-label>{{ 'item-code' | translate }}</mat-label>
       <input matInput type="text" formControlName="itemCode" oninput="this.value = this.value.toUpperCase()">
     </mat-form-field>
@@ -33,6 +57,8 @@
       </mat-select>
     </mat-form-field>
 
+    <div class="col-sm-8"></div>
+
     <div class="col-sm-12">
       <button mat-raised-button color="primary" class="float-end mx-2" (click)="search()">
         <i class="bi bi-search me-2 just-white"></i>
@@ -45,4 +71,5 @@
       </button>
     </div>
   </form>
+
 </div>

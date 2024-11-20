@@ -34,11 +34,11 @@ export class StockFilterComponent implements OnInit {
               //private reportService: ReportService,
               private contextService: ContextService,
               private formBuilder: UntypedFormBuilder) {
-    this.loadProductTypes();
   }
 
   ngOnInit(): void {
     this.loadFormGroup();
+    this.loadProductTypes();
   }
 
   loadFormGroup() {

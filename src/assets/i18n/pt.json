@@ -15,12 +15,13 @@
   "invoice": "Nota Fiscal",
   "product": "Produto",
   "operation-type-label": "Natureza da Operação",
+  "operation": "Operação",
   "number": "Número",
   "emission-period": "Período de Emissão",
   "type": "Tipo",
   "model": "Modelo",
   "item": "Item",
-  "item-code": "Código do item",
+  "item-code": "Código do Item",
   "commercial-series": "Série Comercial",
   "chassis-number": "Monobloco",
   "clear": "Limpar",
@@ -30,6 +31,9 @@
   "export": "Exportar",
   "register-invoice": "Cadastrar Nota",
   "transfer": "Transferência",
+  "emission-date": "Data de Emissão",
+  "return": "Devolução",
+  "invoice-number": "Número da Nota",
 
   "exceptions": {
     "failed-operation": "Ocorreu um erro ao realizar a operação, por favor tente novamente",
@@ -48,6 +52,16 @@
 
   "headers": {
     "login": "Acessar StockHub",
-    "stock": "Estoque"
+    "stock": "Estoque",
+    "invoice-history": "Histórico de Notas"
+  },
+
+  "period": {
+    "last-7-days": "Últimos 7 dias",
+    "last-30-days": "Últimos 30 dias",
+    "last-90-days": "Últimos 90 dias",
+    "last-120-days": "Últimos 120 dias",
+    "last-1-year": "Último 1 ano",
+    "last-2-years": "Últimos 2 anos"
   }
 }

@@ -6,8 +6,10 @@ export const environment = {
     paths: {
       login: '/authentication/login',
       getDealer: '/dealer/{cnpj}',
-      getStock: '/stock',
-      getAllProductType: '/product-type'
+      getStock: '/stock/filter',
+      getAllProductType: '/product-type',
+      getInvoiceHistory: '/invoice/history',
+      getInvoiceOperations: '/invoice/operations',
     }
   },
 
