@@ -17,6 +17,7 @@
   "operation-type-label": "Natureza da Operação",
   "operation": "Operação",
   "number": "Número",
+  "series": "Série",
   "emission-period": "Período de Emissão",
   "type": "Tipo",
   "model": "Modelo",
@@ -34,11 +35,27 @@
   "emission-date": "Data de Emissão",
   "return": "Devolução",
   "invoice-number": "Número da Nota",
+  "document-type": "Tipo de Documento",
+  "legal-number": "Número do Documento",
+  "currency-type": "Moeda",
+  "value": "Valor",
+  "name": "Nome",
+  "country": "País",
+  "region": "Estado",
+  "city": "Cidade",
+  "address": "Endereço",
+  "complement": "Complemento",
+  "destination-customer": "Destinatário/Cliente",
+  "go-back": "Voltar",
+  "send": "Enviar",
+  "selected-products": "Produtos Selecionados",
+  "dealer": "Concessionária",
 
   "exceptions": {
     "failed-operation": "Ocorreu um erro ao realizar a operação, por favor tente novamente",
     "table-search-error": "Erro ao realizar a pesquisa, por favor tente novamente.",
-    "load-data-error": "Erro ao carregar valores, por favor tente novamente."
+    "load-data-error": "Erro ao carregar valores, por favor tente novamente.",
+    "mandatory-fields-not-fulfilled": "Campos obrigatórios não preenchidos."
   },
 
   "confirmations": {
@@ -53,7 +70,10 @@
   "headers": {
     "login": "Acessar StockHub",
     "stock": "Estoque",
-    "invoice-history": "Histórico de Notas"
+    "invoice-history": "Histórico de Notas",
+    "invoice-entry-sale": "Informe de Venda",
+    "invoice-entry-return": "Informe de Devolução",
+    "invoice-entry-transfer": "Informe de Transferência"
   },
 
   "period": {
@@ -63,5 +83,10 @@
     "last-120-days": "Últimos 120 dias",
     "last-1-year": "Último 1 ano",
     "last-2-years": "Últimos 2 anos"
+  },
+
+  "placeholders": {
+    "address": "Ex.: Rua das Flores, Bairro Centro, Nº 123",
+    "complement": "Ex.: Apto 45"
   }
 }

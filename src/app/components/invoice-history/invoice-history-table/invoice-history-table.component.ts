@@ -14,6 +14,7 @@ import {Observable} from "rxjs";
 import {PageSpring} from "../../../classes/common/page-spring";
 import {InvoiceHistoryRequestDTO} from "../../../classes/request/invoice-history-request-dto";
 import {PageEvent} from "@angular/material/paginator";
+import {OperationType} from "../../../classes/type/operation-type";
 
 @Component({
   selector: 'app-invoice-history-table',
@@ -79,11 +80,11 @@ export class InvoiceHistoryTableComponent implements AfterViewInit {
         prods.push(p);
       });
 
-      this.contextService.setOperationType('4');
-      this.router.navigate(['invoiceentry'], {
+      this.contextService.setOperationType(OperationType.RETURN);
+      this.router.navigate(['invoice-entry'], {
         state: {
           selectedProducts: prods,
-          operationType: 4
+          operationType: OperationType.RETURN
         }
       });
     }

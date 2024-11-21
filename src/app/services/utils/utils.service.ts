@@ -27,4 +27,18 @@ export class UtilsService {
     date.setDate(date.getDate() - emissionPeriod.days);
     return date;
   }
+
+  getLegalNumberMask(documentType: string): string {
+    switch (documentType) {
+      case 'CPF':
+        return '000.000.000-00';
+
+      case 'CNPJ':
+        return '00.000.000/0000-00';
+
+      default:
+        return '';
+    }
+  }
+
 }

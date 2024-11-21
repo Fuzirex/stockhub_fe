@@ -6,10 +6,14 @@ export const environment = {
     paths: {
       login: '/authentication/login',
       getDealer: '/dealer/{cnpj}',
+      getDealersToTransfer: '/dealer/to-transfer',
       getStock: '/stock/filter',
       getAllProductType: '/product-type',
       getInvoiceHistory: '/invoice/history',
       getInvoiceOperations: '/invoice/operations',
+      getCountries: '/location/countries',
+      getStates: '/location/states',
+      getCitiesByState: '/location/cities-by-state/{state}',
     }
   },
 

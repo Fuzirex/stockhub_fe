@@ -6,6 +6,7 @@ import {DialogGenericComponent} from "../../components/dialogs/dialog-generic/di
 import {DialogConfirmComponent} from "../../components/dialogs/dialog-confirm/dialog-confirm.component";
 import {Router} from "@angular/router";
 import {DealerResponseDTO} from "../../classes/response/dealer-response-dto";
+import {OperationType} from "../../classes/type/operation-type";
 
 @Injectable({
   providedIn: 'root'
@@ -114,13 +115,19 @@ export class ContextService {
     sessionStorage.setItem('dealer', JSON.stringify(dealer));
   }
 
-  setOperationType(operation: string) {
-    sessionStorage.setItem('operationType', operation);
+  setOperationType(operation: OperationType) {
+    sessionStorage.setItem('operationType', operation.toString());
   }
 
-  getOperationType(): string {
+  getOperationType(): OperationType {
     let operation = sessionStorage.getItem('operationType');
-    return operation ? operation : '1';
+
+    if (operation !== null)
+      return OperationType[operation as keyof typeof OperationType] !== undefined
+        ? OperationType[operation as keyof typeof OperationType]
+        : OperationType.SALE;
+    else
+      return OperationType.SALE;
   }
 
 }

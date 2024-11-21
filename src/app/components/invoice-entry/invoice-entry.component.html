@@ -1,0 +1,203 @@
+<div class="round-transparent-background">
+  <!-- INVOICE INFO -->
+  <div class="col-sm-12">
+    <legend class="pt-2 ps-3">{{ 'invoice' | translate }}</legend>
+    <mat-divider class="mb-3"></mat-divider>
+
+    <form [formGroup]="formGroup" class="col-sm-12 row w-auto px-3">
+      <mat-form-field class="col-sm-3 my-2">
+        <mat-label>{{ 'number' | translate }}</mat-label>
+        <input matInput type="text" formControlName="invoiceNumber" maxlength="15"
+               oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+
+        <mat-error *ngIf="formGroup.get('invoiceNumber')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-3 my-2">
+        <mat-label>{{ 'series' | translate }}</mat-label>
+        <input matInput type="text" formControlName="invoiceSeries" maxlength="15"
+               oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+
+        <mat-error *ngIf="formGroup.get('invoiceSeries')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-3 my-2">
+        <mat-label>{{ 'emission-date' | translate }}</mat-label>
+        <input matInput [ngxMatDatetimePicker]="emissionDatePicker" (click)="emissionDatePicker.open()" formControlName="emissionDate">
+        <mat-datepicker-toggle matSuffix [for]="$any(emissionDatePicker)"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #emissionDatePicker [showSpinners]="true" [showSeconds]="true">
+        </ngx-mat-datetime-picker>
+
+        <mat-error *ngIf="formGroup.get('emissionDate')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-3 my-2">
+        <mat-label>{{ 'currency-type' | translate }}</mat-label>
+        <mat-select formControlName="currencyType" (selectionChange)="onCurrencyTypeChange()">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let type of getCurrencyTypes()" [value]="type">
+            {{ type.valueOf() }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="col-sm-9"></div>
+
+      <mat-form-field class="col-sm-3 my-2">
+        <mat-label>{{ 'value' | translate }}</mat-label>
+        <input matInput currencyMask autocomplete="off" [options]="{ prefix: '$ ', thousands: '.', decimal: ',', allowNegative: false }"
+               formControlName="invoiceValue" maxlength="16">
+
+        <mat-error *ngIf="formGroup.get('invoiceValue')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <!-- DESTINATION INFO FOR SALE -->
+  <div class="col-sm-12" *ngIf="isOperationTypeSales()">
+    <legend class="pt-2 ps-3">{{ 'destination-customer' | translate }}</legend>
+    <mat-divider class="mb-3"></mat-divider>
+
+    <form [formGroup]="formGroup" class="col-sm-12 row w-auto px-3">
+      <mat-form-field class="col-sm-3 my-2">
+        <mat-label>{{ 'document-type' | translate }}</mat-label>
+        <mat-select formControlName="documentType" (selectionChange)="onDocumentTypeChange()">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let documentType of getDocumentTypes()" [value]="documentType">
+            {{ documentType }}
+          </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="formGroup.get('documentType')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-3 my-2">
+        <mat-label>{{ 'legal-number' | translate }}</mat-label>
+        <input matInput formControlName="legalNumber" type="text" [mask]="getLegalNumberMask()" [showMaskTyped]="true">
+
+        <mat-error *ngIf="formGroup.get('legalNumber')?.hasError('invalidLegalNumber')">
+          {{ 'validations.invalidLegalNumber' | translate }}
+        </mat-error>
+        <mat-error *ngIf="formGroup.get('legalNumber')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-6 my-2">
+        <mat-label>{{ 'name' | translate }}</mat-label>
+        <input matInput type="text" formControlName="customerName" maxlength="100">
+
+        <mat-error *ngIf="formGroup.get('customerName')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-4">
+        <mat-label>{{ 'country' | translate }}</mat-label>
+        <mat-select formControlName="country" (selectionChange)="onCountryChange()">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let country of countryList" [value]="country.code">
+            {{ country.description }}
+          </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="formGroup.get('country')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-4">
+        <mat-label>{{ 'region' | translate }}</mat-label>
+        <mat-select formControlName="region" (selectionChange)="onRegionChange()">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let region of regionList" [value]="region.code">
+            {{ region.description }}
+          </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="formGroup.get('region')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-4">
+        <mat-label>{{ 'city' | translate }}</mat-label>
+        <mat-select formControlName="city">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let city of cityList" [value]="city.code">
+            {{ city.description }}
+          </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="formGroup.get('city')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-7 my-2">
+        <mat-label>{{ 'address' | translate }}</mat-label>
+        <input matInput type="text" maxlength="255" formControlName="address" placeholder="{{ 'placeholders.address' | translate }}">
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-5 my-2">
+        <mat-label>{{ 'complement' | translate }}</mat-label>
+        <input matInput type="text" maxlength="255" formControlName="complement" placeholder="{{ 'placeholders.complement' | translate }}">
+      </mat-form-field>
+    </form>
+  </div>
+
+  <!-- DESTINATION INFO FOR TRANSFER -->
+  <div class="col-sm-12" *ngIf="isOperationTypeTransfer()">
+    <legend class="pt-2 ps-3">{{ 'destination-customer' | translate }}</legend>
+    <mat-divider class="mb-3"></mat-divider>
+
+    <form [formGroup]="formGroup" class="col-sm-12 row w-auto px-3">
+      <mat-form-field class="col-sm-6 my-2">
+        <mat-label>{{ 'dealer' | translate }}</mat-label>
+        <mat-select formControlName="dealerToTransfer">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let d of dealerListToTransfer" [value]="d.cnpj">
+            {{ d.name }} - {{ d.cityDesc }} - {{ d.cnpj }}
+          </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="formGroup.get('dealerToTransfer')?.hasError('required')">
+          {{ 'validations.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="col-sm-12 p-3">
+    <form class="col-sm-12 row w-auto">
+      <div class="col-sm-12">
+        <button mat-raised-button color="warn" class="float-end mx-2" (click)="sendInvoice()">
+          <i class="bi bi-send me-2 just-white"></i>
+          <span class="just-white fw-semibold">{{ 'send' | translate }}</span>
+        </button>
+
+        <button mat-raised-button class="float-end mx-2" (click)="clearForm()">
+          <i class="bi bi-trash3 me-2"></i>
+          <span>{{ 'clear' | translate }}</span>
+        </button>
+
+        <button mat-raised-button class="float-end mx-2" (click)="goBackLastPage()">
+          <i class="bi bi-arrow-left me-2"></i>
+          <span>{{ 'go-back' | translate }}</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-invoice-entry-product-table [selectedProducts]="selectedProducts"></app-invoice-entry-product-table>
