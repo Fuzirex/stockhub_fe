@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {Navbar} from "../../classes/navbar/navbar";
 import {fade} from "../animations/fade";
 import {ContextService} from "../../services/context/context.service";
+import {CurrencyType} from "../../classes/type/currency-type";
 
 @Component({
   selector: 'app-navbar',
@@ -78,7 +79,10 @@ export class NavbarComponent implements OnInit {
         this.router.navigateByUrl('login');
       }
     });
+  }
 
+  changeTranslation(lang: string) {
+    this.contextService.configureLanguage(lang);
   }
 
 }
