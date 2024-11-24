@@ -16,6 +16,8 @@ import {OperationType} from "../../classes/type/operation-type";
 import {CustomValidators} from "../../classes/validators/custom-validators";
 import {InvoiceEntryProductTableComponent} from "./invoice-entry-product-table/invoice-entry-product-table.component";
 import {DealerService} from "../../services/dealer/dealer.service";
+import {InvoiceEntryRequestDTO} from "../../classes/request/invoice-entry-request-dto";
+import {InvoiceEntryStockRequestDTO} from "../../classes/request/invoice-entry-stock-request-dto";
 
 @Component({
   selector: 'app-invoice-entry',
@@ -127,52 +129,68 @@ export class InvoiceEntryComponent implements OnInit {
 
   sendInvoice() {
     if (this.formGroup.valid) {
-      alert('To be done...');
-      /*this.spinner.show();
+      this.spinner.show();
 
       this.invoiceService.sendInvoiceEntry(this.createInvoiceEntry()).subscribe({
         next: (result: any) => {
           this.contextService.openGenericDialog('warning', 'successful-operation')
-            ?.afterClosed().subscribe(exitParams => {
-            this.invoiceEntryComponent.goBackLastPage();
-          });
+            ?.afterClosed().subscribe(exitParams => this.goBackLastPage());
         },
         error: (error: any) => this.contextService.openGenericDialog('warning', 'exceptions.failed-operation', error),
         complete: () => this.spinner.hide()
-      });*/
+      });
     } else {
       this.formGroup.markAllAsTouched();
       this.contextService.openGenericDialog('warning', 'exceptions.mandatory-fields-not-fulfilled');
     }
   }
 
-  /*private createInvoiceEntry(): InvoiceEntryRequest {
-    var invoiceEntry = new InvoiceEntryRequest();
+  private createInvoiceEntry(): InvoiceEntryRequestDTO {
+    let invoiceEntry = new InvoiceEntryRequestDTO();
+
     invoiceEntry.invoiceNumber = this.formGroup.get("invoiceNumber")?.value;
+    invoiceEntry.invoiceSeries = this.formGroup.get("invoiceSeries")?.value;
     invoiceEntry.emissionDate = this.formGroup.get("emissionDate")?.value;
-    invoiceEntry.invoiceValue = this.formGroup.get("invoiceValue")?.value;
     invoiceEntry.currencyType = this.formGroup.get("currencyType")?.value;
+    invoiceEntry.invoiceValue = this.formGroup.get("invoiceValue")?.value;
 
     if (this.isOperationTypeSales()) {
       invoiceEntry.customerDocumentType = this.formGroup.get("documentType")?.value;
       invoiceEntry.customerLegalNumber = this.formGroup.get("legalNumber")?.value;
       invoiceEntry.customerName = this.formGroup.get("customerName")?.value;
       invoiceEntry.customerCountry = this.formGroup.get("country")?.value;
-      invoiceEntry.customerRegion = this.formGroup.get("region")?.value;
+      invoiceEntry.customerState = this.formGroup.get("region")?.value;
       invoiceEntry.customerCity = this.formGroup.get("city")?.value;
-      invoiceEntry.customerAddressName = this.formGroup.get("addressName")?.value;
-      invoiceEntry.customerAddressDescription = this.formGroup.get("addressDescription")?.value;
+      invoiceEntry.customerAddress = this.formGroup.get("address")?.value;
+      invoiceEntry.customerComplement = this.formGroup.get("complement")?.value;
     }
 
     if (this.isOperationTypeTransfer())
       invoiceEntry.dealerToTransfer = this.formGroup.get("dealerToTransfer")?.value;
 
-    invoiceEntry.operationType = this.invoiceEntryComponent.operationType;
-    invoiceEntry.products = this.invoiceEntryComponent.createInvoiceEntryStock();
-    invoiceEntry.dealerCode = this.contextService.getCurrentDealer().dealerNumber;
+    invoiceEntry.operationType = this.operationType;
+    invoiceEntry.products = this.createInvoiceEntryStock();
+    invoiceEntry.dealerCNPJ = this.contextService.getDealer().cnpj;
 
     return invoiceEntry;
-  }*/
+  }
+
+  public createInvoiceEntryStock(): InvoiceEntryStockRequestDTO[] {
+    let products: InvoiceEntryStockRequestDTO[] = [];
+
+    this.selectedProducts.forEach(selectedProd => {
+      let entryStock = new InvoiceEntryStockRequestDTO();
+
+      entryStock.productModel = selectedProd.model;
+      entryStock.itemCode = selectedProd.itemCode;
+      entryStock.commercialSeries = selectedProd.commercialSeries;
+      entryStock.chassisNumber = selectedProd.chassisNumber;
+
+      products.push(entryStock);
+    });
+
+    return products;
+  }
 
   onCountryChange() {
     let country = this.formGroup.get("country")?.value;

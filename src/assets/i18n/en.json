@@ -50,6 +50,7 @@
   "send": "Send",
   "selected-products": "Selected Products",
   "dealer": "Dealer",
+  "successful-operation": "Successful Operation",
 
   "exceptions": {
     "failed-operation": "An error occurred while performing the operation, please try again",

@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {InvoiceOperationTypeResponseDTO} from "../../classes/response/invoice-operation-type-response-dto";
 import {InvoiceHistoryRequestDTO} from "../../classes/request/invoice-history-request-dto";
+import {InvoiceEntryRequestDTO} from "../../classes/request/invoice-entry-request-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,11 @@ import {InvoiceHistoryRequestDTO} from "../../classes/request/invoice-history-re
 export class InvoiceService {
 
   constructor(private httpClient: HttpClient) {
+  }
+
+  sendInvoiceEntry(dto: InvoiceEntryRequestDTO): Observable<void> {
+    const url = environment.stockhubApi.baseUrl + environment.stockhubApi.paths.postInvoiceEntry;
+    return this.httpClient.post<void>(url, dto);
   }
 
   getInvoiceHistory(filter: InvoiceHistoryRequestDTO): Observable<PageSpring> {

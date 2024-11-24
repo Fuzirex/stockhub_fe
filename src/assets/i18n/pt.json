@@ -50,6 +50,7 @@
   "send": "Enviar",
   "selected-products": "Produtos Selecionados",
   "dealer": "Concessionária",
+  "successful-operation": "Operação realizada com sucesso",
 
   "exceptions": {
     "failed-operation": "Ocorreu um erro ao realizar a operação, por favor tente novamente",
