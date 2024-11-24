@@ -7,6 +7,7 @@ import {ContextService} from "../context/context.service";
 import {Observable} from "rxjs";
 import {ReportStockRequestDTO} from "../../classes/request/report-stock-request-dto";
 import {environment} from "../../../environments/environment";
+import {ReportInvoiceHistoryRequestDTO} from "../../classes/request/report-invoice-history-request-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,12 @@ export class ReportService {
   exportStockReport(dto: ReportStockRequestDTO) {
     let reportName: string = 'reports.stock';
     let url = environment.stockhubApi.baseUrl + environment.stockhubApi.paths.exportStockReport;
+    this.download(this.httpClient.post<Blob>(url, dto, this.blobResponseTypeOptions), reportName);
+  }
+
+  exportInvoiceHistoryReport(dto: ReportInvoiceHistoryRequestDTO) {
+    let reportName: string = 'reports.invoice-history';
+    let url = environment.stockhubApi.baseUrl + environment.stockhubApi.paths.exportInvoiceHistoryReport;
     this.download(this.httpClient.post<Blob>(url, dto, this.blobResponseTypeOptions), reportName);
   }
 

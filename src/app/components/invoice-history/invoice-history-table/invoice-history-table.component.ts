@@ -41,7 +41,7 @@ export class InvoiceHistoryTableComponent implements AfterViewInit {
   @Output()
   onPaginationChange: EventEmitter<Pagination> = new EventEmitter<Pagination>();
   @Output()
-  onExport: EventEmitter<boolean> = new EventEmitter<boolean>();
+  onExport: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(@Host() private invoiceHistoryComponent: InvoiceHistoryComponent,
               private spinner: NgxSpinnerService,

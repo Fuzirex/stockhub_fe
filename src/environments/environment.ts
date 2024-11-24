@@ -16,6 +16,7 @@ export const environment = {
       getStates: '/location/states',
       getCitiesByState: '/location/cities-by-state/{state}',
       exportStockReport: '/report/stock',
+      exportInvoiceHistoryReport: '/report/invoice-history',
     }
   },
 

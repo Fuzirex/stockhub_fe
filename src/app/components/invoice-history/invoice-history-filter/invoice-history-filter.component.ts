@@ -12,6 +12,8 @@ import {ProductTypeResponseDTO} from "../../../classes/response/product-type-res
 import {InvoiceService} from "../../../services/invoice/invoice.service";
 import {InvoiceOperationTypeResponseDTO} from "../../../classes/response/invoice-operation-type-response-dto";
 import {InvoiceHistoryRequestDTO} from "../../../classes/request/invoice-history-request-dto";
+import {ReportService} from "../../../services/report/report.service";
+import {ReportInvoiceHistoryRequestDTO} from "../../../classes/request/report-invoice-history-request-dto";
 
 @Component({
   selector: 'app-invoice-history-filter',
@@ -38,7 +40,7 @@ export class InvoiceHistoryFilterComponent implements OnInit {
               private productTypeService: ProductTypeService,
               private invoiceService: InvoiceService,
               private spinner: NgxSpinnerService,
-              /*private reportService: ReportService,*/
+              private reportService: ReportService,
               private contextService: ContextService,
               private formBuilder: UntypedFormBuilder) {
   }
@@ -95,7 +97,7 @@ export class InvoiceHistoryFilterComponent implements OnInit {
   }
 
   exportInvoiceHistoryReport() {
-    //this.reportService.exportInvoiceHistoryReport(this.getInvoiceHistoryReportRequest());
+    this.reportService.exportInvoiceHistoryReport(this.getInvoiceHistoryReportRequest());
   }
 
   createInvoiceHistoryRequest(page?: number, pageSize?: number): InvoiceHistoryRequestDTO {
@@ -117,10 +119,10 @@ export class InvoiceHistoryFilterComponent implements OnInit {
     return request;
   }
 
-  /*getInvoiceHistoryReportRequest(isMassExport: boolean): InvoiceHistoryReportRequest {
-    let filter = new InvoiceHistoryReportRequest();
+  getInvoiceHistoryReportRequest(): ReportInvoiceHistoryRequestDTO {
+    let filter = new ReportInvoiceHistoryRequestDTO();
 
-    filter.dealerCode = this.contextService.getDealerNumber();
+    filter.dealerCNPJ = this.contextService.getDealer().cnpj;
     filter.invoiceNumber = this.formGroup.get('invoiceNumber')?.value;
     filter.chassisNumber = this.formGroup.get('chassisNumber')?.value;
     filter.commercialSeries = this.formGroup.get('commercialSeries')?.value;
@@ -128,10 +130,9 @@ export class InvoiceHistoryFilterComponent implements OnInit {
     filter.itemCode = this.formGroup.get('itemCode')?.value;
     filter.operationType = this.formGroup.get('operationType')?.value;
     filter.productType = this.formGroup.get('productType')?.value;
-    filter.emissionPeriod = this.invoiceService.getEmissionPeriodDate((this.formGroup.get('emissionPeriod')?.value as Period));
-    filter.massExport = isMassExport;
+    filter.emissionPeriod = this.utilsService.getEmissionPeriodDate((this.formGroup.get('emissionPeriod')?.value as Period));
 
     return filter;
-  }*/
+  }
 
 }
