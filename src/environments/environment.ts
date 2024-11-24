@@ -11,6 +11,7 @@ export const environment = {
       getAllProductType: '/product-type',
       getInvoiceHistory: '/invoice/history',
       getInvoiceOperations: '/invoice/operations',
+      postInvoiceEntry: '/invoice/entry',
       getCountries: '/location/countries',
       getStates: '/location/states',
       getCitiesByState: '/location/cities-by-state/{state}',

@@ -3,12 +3,14 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {NgxSpinnerService} from "ngx-spinner";
 import {ContextService} from "../context/context.service";
 import {catchError, Observable, throwError} from "rxjs";
+import {DatePipe} from "@angular/common";
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
 
   constructor(private spinner: NgxSpinnerService,
-              private contextService: ContextService) {
+              private contextService: ContextService,
+              private datePipe: DatePipe) {
   }
 
   handleError(error: any) {
@@ -38,6 +40,9 @@ export class HttpRequestInterceptor implements HttpInterceptor {
         newRequest = newRequest.clone({
           headers: newRequest.headers.set('Authorization', 'Bearer ' + token)
         });
+
+      if (request.method === 'POST')
+        this.changeDatesToLocalDateTime(request.body);
     }
 
     return next.handle(newRequest).pipe(catchError((error: HttpErrorResponse) => {
@@ -53,6 +58,24 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 
   private stopAllSpinners() {
     this.spinner.hide();
+  }
+
+  changeDatesToLocalDateTime(body: any) {
+    if (body === null || body === undefined)
+      return body;
+
+    if (typeof body !== 'object')
+      return body;
+
+    for (const key of Object.keys(body)) {
+      const value = body[key];
+
+      if (value instanceof Date)
+        body[key] = this.datePipe.transform(value, 'yyyy-MM-ddTHH:mm:ss');
+
+      else if (typeof value === 'object')
+        this.changeDatesToLocalDateTime(value);
+    }
   }
 
 }

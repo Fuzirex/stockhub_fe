@@ -56,6 +56,7 @@ import {LocationService} from "./services/location/location.service";
 import {CurrencyMaskModule} from "ng2-currency-mask";
 import { InvoiceEntryProductTableComponent } from './components/invoice-entry/invoice-entry-product-table/invoice-entry-product-table.component';
 import {MatSortModule} from "@angular/material/sort";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -127,6 +128,7 @@ import {MatSortModule} from "@angular/material/sort";
       useValue: {appearance: 'outline', floatLabel: 'auto'}
     },
     provideNgxMask(),
+    DatePipe,
     HttpRequestInterceptor,
     InitService,
     ContextService,
