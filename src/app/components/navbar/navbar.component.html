@@ -31,7 +31,7 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }">
 
-          <i class="sidenav-link-icon" [class]="data.icon"></i>
+          <i class="sidenav-link-icon" [class]="data.icon" title="{{ data.label | translate }}"></i>
 
           <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
             {{ data.label | translate }}
@@ -50,5 +50,20 @@
 
       </li>
     </ul>
+  </div>
+
+  <div class="sidenav-footer">
+    <button class="footer-button" (click)="changeTranslation('pt')">
+      <img src="assets/images/pt_flag_icon.png" title="{{ 'languages.pt' | translate }}" />
+      <span *ngIf="collapsed">{{ 'languages.pt' | translate }}</span>
+    </button>
+    <button class="footer-button" (click)="changeTranslation('en')">
+      <img src="assets/images/en_flag_icon.png" title="{{ 'languages.en' | translate }}" />
+      <span *ngIf="collapsed">{{ 'languages.en' | translate }}</span>
+    </button>
+    <button class="footer-button" (click)="changeTranslation('es')">
+      <img src="assets/images/es_flag_icon.png" title="{{ 'languages.es' | translate }}" />
+      <span *ngIf="collapsed">{{ 'languages.es' | translate }}</span>
+    </button>
   </div>
 </div>

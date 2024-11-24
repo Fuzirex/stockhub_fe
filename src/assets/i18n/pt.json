@@ -56,7 +56,8 @@
     "failed-operation": "Ocorreu um erro ao realizar a operação, por favor tente novamente",
     "table-search-error": "Erro ao realizar a pesquisa, por favor tente novamente.",
     "load-data-error": "Erro ao carregar valores, por favor tente novamente.",
-    "mandatory-fields-not-fulfilled": "Campos obrigatórios não preenchidos."
+    "mandatory-fields-not-fulfilled": "Campos obrigatórios não preenchidos.",
+    "report-export-error": "Erro ao exportar o relatório, por favor tente novamente."
   },
 
   "confirmations": {
@@ -89,5 +90,16 @@
   "placeholders": {
     "address": "Ex.: Rua das Flores, Bairro Centro, Nº 123",
     "complement": "Ex.: Apto 45"
+  },
+
+  "reports": {
+    "invoice-history": "RelatorioHistoricoNotas",
+    "stock": "RelatorioEstoque"
+  },
+
+  "languages": {
+    "pt": "Português",
+    "en": "Inglês",
+    "es": "Espanhol"
   }
 }

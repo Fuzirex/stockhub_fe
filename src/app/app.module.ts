@@ -57,6 +57,7 @@ import {CurrencyMaskModule} from "ng2-currency-mask";
 import { InvoiceEntryProductTableComponent } from './components/invoice-entry/invoice-entry-product-table/invoice-entry-product-table.component';
 import {MatSortModule} from "@angular/material/sort";
 import {DatePipe} from "@angular/common";
+import {ReportService} from "./services/report/report.service";
 
 @NgModule({
   declarations: [
@@ -138,7 +139,8 @@ import {DatePipe} from "@angular/common";
     ProductTypeService,
     UtilsService,
     InvoiceService,
-    LocationService
+    LocationService,
+    ReportService
   ],
   bootstrap: [AppComponent]
 })

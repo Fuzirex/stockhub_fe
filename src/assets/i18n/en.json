@@ -56,7 +56,8 @@
     "failed-operation": "An error occurred while performing the operation, please try again",
     "table-search-error": "Error performing search, please try again.",
     "load-data-error": "Error loading data, please try again.",
-    "mandatory-fields-not-fulfilled": "Mandatory fields not fulfilled."
+    "mandatory-fields-not-fulfilled": "Mandatory fields not fulfilled.",
+    "report-export-error": "Error exporting report, please try again."
   },
 
   "confirmations": {
@@ -89,5 +90,16 @@
   "placeholders": {
     "address": "e.g.: Flower Street, Downtown, No. 123",
     "complement": "e.g.: Apt 45"
+  },
+
+  "reports": {
+    "invoice-history": "InvoiceHistoryReport",
+    "stock": "StockReport"
+  },
+
+  "languages": {
+    "pt": "Portuguese",
+    "en": "English",
+    "es": "Spanish"
   }
 }

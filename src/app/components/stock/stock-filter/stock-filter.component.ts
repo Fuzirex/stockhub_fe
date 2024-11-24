@@ -9,6 +9,8 @@ import {environment} from "../../../../environments/environment";
 import {StockRequestDTO} from "../../../classes/request/stock-request-dto";
 import {ProductTypeResponseDTO} from "../../../classes/response/product-type-response-dto";
 import {ProductTypeService} from "../../../services/product-type/product-type.service";
+import {ReportService} from "../../../services/report/report.service";
+import {ReportStockRequestDTO} from "../../../classes/request/report-stock-request-dto";
 
 @Component({
   selector: 'app-stock-filter',
@@ -31,7 +33,7 @@ export class StockFilterComponent implements OnInit {
   constructor(private productTypeService: ProductTypeService,
               private stockService: StockService,
               private spinner: NgxSpinnerService,
-              //private reportService: ReportService,
+              private reportService: ReportService,
               private contextService: ContextService,
               private formBuilder: UntypedFormBuilder) {
   }
@@ -65,7 +67,7 @@ export class StockFilterComponent implements OnInit {
   }
 
   exportStockReport() {
-    //this.reportService.exportStockReport(this.getStockReportRequest());
+    this.reportService.exportStockReport(this.getStockReportRequest());
     this.spinner.hide();
   }
 
@@ -93,17 +95,17 @@ export class StockFilterComponent implements OnInit {
     return filter;
   }
 
-  /*getStockReportRequest(): StockReportRequest {
-    let filter = new StockReportRequest();
+  getStockReportRequest(): ReportStockRequestDTO {
+    let dto = new ReportStockRequestDTO();
 
-    filter.dealerCNPJ = this.contextService.getDealer().cnpj;
-    filter.chassisNumber = this.formGroup.get('chassisNumber')?.value;
-    filter.commercialSeries = this.formGroup.get('commercialSeries')?.value;
-    filter.productModel = this.formGroup.get('productModel')?.value;
-    filter.itemCode = this.formGroup.get('itemCode')?.value;
-    filter.productType = this.formGroup.get('productType')?.value;
+    dto.dealerCNPJ = this.contextService.getDealer().cnpj;
+    dto.chassisNumber = this.formGroup.get('chassisNumber')?.value;
+    dto.commercialSeries = this.formGroup.get('commercialSeries')?.value;
+    dto.model = this.formGroup.get('productModel')?.value;
+    dto.itemCode = this.formGroup.get('itemCode')?.value;
+    dto.productType = this.formGroup.get('productType')?.value;
 
-    return filter;
-  }*/
+    return dto;
+  }
 
 }

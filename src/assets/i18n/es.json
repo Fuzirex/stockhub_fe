@@ -52,12 +52,12 @@
   "dealer": "Concessionaria",
   "successful-operation": "Operación realizada con éxito",
 
-
   "exceptions": {
     "failed-operation": "Ocurrió un error al realizar la operación, intente nuevamente",
     "table-search-error": "Error al realizar la búsqueda, inténtalo de nuevo.",
     "load-data-error": "No se han podido cargar los valores, vuelva a intentarlo.",
-    "mandatory-fields-not-fulfilled": "Campos obligatorios no rellenados."
+    "mandatory-fields-not-fulfilled": "Campos obligatorios no rellenados.",
+    "report-export-error": "Error al exportar el informe, inténtalo de nuevo."
   },
 
   "confirmations": {
@@ -90,5 +90,16 @@
   "placeholders": {
     "address": "Ej.: Calle Flores, Barrio Centro, Nº 123",
     "complement": "Ej.: Depto 45"
+  },
+
+  "reports": {
+    "invoice-history": "InformeHistorialNotas",
+    "stock": "InformeInventario"
+  },
+
+  "languages": {
+    "pt": "Portugués",
+    "en": "Inglés",
+    "es": "Español"
   }
 }
