@@ -51,6 +51,9 @@
   "selected-products": "Produtos Selecionados",
   "dealer": "Concessionária",
   "successful-operation": "Operação realizada com sucesso",
+  "actions": "Ações",
+  "undo": "Desfazer",
+  "confirm-undo-op-message": "Tem certeza que deseja desfazer a operação deste produto?",
 
   "exceptions": {
     "failed-operation": "Ocorreu um erro ao realizar a operação, por favor tente novamente",

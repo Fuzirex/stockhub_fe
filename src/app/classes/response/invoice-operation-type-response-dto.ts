@@ -1,6 +1,8 @@
+import {OperationType} from "../type/operation-type";
+
 export class InvoiceOperationTypeResponseDTO {
 
-  id!: string;
+  operation!: OperationType;
   description!: string;
 
 }
