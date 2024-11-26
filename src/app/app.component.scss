@@ -1,5 +1,13 @@
 .padding-for-layout {
+  transition: all 0.5s ease;
   padding-top: 5rem;
   padding-bottom: 4rem;
-  padding-left: 5rem;
+}
+
+.body-trimmed {
+  padding-left: 16rem !important;
+}
+
+.body-md-screen {
+  padding-left: 5rem !important;
 }

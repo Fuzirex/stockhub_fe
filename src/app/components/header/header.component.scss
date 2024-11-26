@@ -9,15 +9,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding-right: 1rem;
+  transition: all 0.5s ease;
 }
 
-/*.navbar-icon {
-  font-size: 30px;
-  cursor: pointer;
-  color: #000000;
-}*/
-
 .logo img {
-  height: 4rem;
+  height: 3rem;
+}
+
+.header-trimmed {
+  padding-left: 17rem;
+}
+
+.header-md-screen {
+  padding-left: 6rem;
 }
