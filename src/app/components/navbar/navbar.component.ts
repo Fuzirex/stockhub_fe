@@ -1,9 +1,9 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {Navbar} from "../../classes/navbar/navbar";
 import {fade} from "../animations/fade";
 import {ContextService} from "../../services/context/context.service";
-import {CurrencyType} from "../../classes/type/currency-type";
+import {SideNavToggle} from "../../classes/common/side-nav-toggle";
 
 @Component({
   selector: 'app-navbar',
@@ -18,11 +18,19 @@ export class NavbarComponent implements OnInit {
   screenWidth = 0;
   multiple = false;
 
+  @Output()
+  onToggleSideNavEvent: EventEmitter<SideNavToggle> = new EventEmitter<SideNavToggle>();
+
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.screenWidth = window.innerWidth;
-    if (this.screenWidth <= 768)
+    if (this.screenWidth <= 768) {
       this.collapsed = false;
+      this.onToggleSideNavEvent.emit({
+        collapsed: this.collapsed,
+        screenWidth: this.screenWidth
+      });
+    }
   }
 
   constructor(public router: Router,
@@ -35,10 +43,18 @@ export class NavbarComponent implements OnInit {
 
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
+    this.onToggleSideNavEvent.emit({
+      collapsed: this.collapsed,
+      screenWidth: this.screenWidth
+    });
   }
 
   closeSidenav(): void {
     this.collapsed = false;
+    this.onToggleSideNavEvent.emit({
+      collapsed: this.collapsed,
+      screenWidth: this.screenWidth
+    });
   }
 
   handleClick(item: Navbar): void {
@@ -83,6 +99,10 @@ export class NavbarComponent implements OnInit {
 
   changeTranslation(lang: string) {
     this.contextService.configureLanguage(lang);
+  }
+
+  onToggleSideNav(data: SideNavToggle): void {
+    this.onToggleSideNavEvent.emit(data);
   }
 
 }

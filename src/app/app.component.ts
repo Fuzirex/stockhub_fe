@@ -4,6 +4,7 @@ import {filter} from "rxjs";
 import {Navbar} from "./classes/navbar/navbar";
 import {ContextService} from "./services/context/context.service";
 import {OperationType} from "./classes/type/operation-type";
+import {SideNavToggle} from "./classes/common/side-nav-toggle";
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,9 @@ export class AppComponent {
 
   title: string = 'project-title';
   menus: Navbar[] = [];
+
+  isSideNavCollapsed = false;
+  screenWidth = 0;
 
   constructor(private router: Router,
               private contextService: ContextService) {
@@ -83,6 +87,15 @@ export class AppComponent {
         }
       ];
     }
+  }
+
+  onToggleSideNav(data: SideNavToggle): void {
+    this.screenWidth = data.screenWidth;
+    this.isSideNavCollapsed = data.collapsed;
+  }
+
+  getBodyClass() : string {
+    return (this.isSideNavCollapsed && this.screenWidth > 768) ? 'body-trimmed' : 'body-md-screen';
   }
 
 }

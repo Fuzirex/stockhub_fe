@@ -1,11 +1,13 @@
-<header class="header">
-  <div class="logo"></div>
+<header class="header" [ngClass]="getHeaderClass()">
+  <div class="logo">
+    <img src="assets/images/stockhub-logo.png" alt="Logo" class="logo" />
+  </div>
 
   <div>
     <h1>{{ title | translate }}</h1>
   </div>
 
   <div class="logo">
-    <img src="assets/images/stockhub_logo.png" alt="Logo" class="logo" />
+    <span>{{ 'dealer' | translate }}: {{ getDealerDisplayInfo() }}</span>
   </div>
 </header>

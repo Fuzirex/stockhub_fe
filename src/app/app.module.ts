@@ -1,6 +1,7 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import {APP_INITIALIZER, LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
+import ptBr from '@angular/common/locales/pt';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
@@ -56,8 +57,10 @@ import {LocationService} from "./services/location/location.service";
 import {CurrencyMaskModule} from "ng2-currency-mask";
 import { InvoiceEntryProductTableComponent } from './components/invoice-entry/invoice-entry-product-table/invoice-entry-product-table.component';
 import {MatSortModule} from "@angular/material/sort";
-import {DatePipe} from "@angular/common";
+import {DatePipe, registerLocaleData} from "@angular/common";
 import {ReportService} from "./services/report/report.service";
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -113,6 +116,10 @@ import {ReportService} from "./services/report/report.service";
     MatSortModule
   ],
   providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: initFunction,

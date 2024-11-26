@@ -8,6 +8,7 @@
   justify-content: center;
   z-index: 100;
   height: 3rem;
+  transition: all 0.5s ease;
 }
 
 .footer-content {
@@ -16,11 +17,19 @@
 }
 
 .footer-logo {
-  height: 35px;
-  margin-right: 15px;
+  height: 2.4rem;
+  margin-right: 10px;
 }
 
 .footer-message {
   display: contents;
   font-size: 14px;
+}
+
+.footer-trimmed {
+  padding-left: 16rem;
+}
+
+.footer-md-screen {
+  padding-left: 5rem;
 }
