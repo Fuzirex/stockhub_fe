@@ -15,6 +15,7 @@ import {PageSpring} from "../../../classes/common/page-spring";
 import {InvoiceHistoryRequestDTO} from "../../../classes/request/invoice-history-request-dto";
 import {PageEvent} from "@angular/material/paginator";
 import {OperationType} from "../../../classes/type/operation-type";
+import {UndoInvoiceRequestDTO} from "../../../classes/request/undo-invoice-request-dto";
 
 @Component({
   selector: 'app-invoice-history-table',
@@ -34,7 +35,8 @@ export class InvoiceHistoryTableComponent implements AfterViewInit {
     "commercialSeries",
     "model",
     "itemCode",
-    "emissionDate"
+    "emissionDate",
+    "actions"
   ];
 
   //Events
@@ -90,6 +92,29 @@ export class InvoiceHistoryTableComponent implements AfterViewInit {
     }
   }
 
+  openUndoOperationConfirmModal(inv: InvoiceHistoryResponseDTO) {
+    this.contextService.openConfirmationModal('warning', 'confirm-undo-op-message')
+      ?.afterClosed().subscribe(exitParams => {
+      if (exitParams['accepted'])
+        this.undoOperation(inv);
+    });
+  }
+
+  undoOperation(invoice: InvoiceHistoryResponseDTO) {
+    this.spinner.show();
+
+    this.invoiceService.sendUndoInvoiceOperation(this.createUndoInvoiceRequestDTO(invoice)).subscribe({
+      next: (result: any) => {
+        this.contextService.openGenericDialog('warning', 'successful-operation')
+          ?.afterClosed().subscribe(exitParams => {
+          this.invoiceHistoryComponent.doFilterSearch();
+        });
+      },
+      error: (error: any) => this.contextService.openGenericDialog('warning', 'exceptions.failed-operation', error),
+      complete: () => this.spinner.hide()
+    });
+  }
+
   clear() {
     this.invoiceList = new MatTableDataSource<InvoiceHistoryResponseDTO>();
     this.pagination = new Pagination(0, 10, 0);
@@ -124,7 +149,7 @@ export class InvoiceHistoryTableComponent implements AfterViewInit {
   disableReturnBtn(): boolean {
     return this.invoiceList?.data.length < 1 ||
       this.invoiceList?.data.filter((inv) => inv.checked).length < 1 ||
-      this.invoiceList?.data.filter((inv) => inv.checked && inv.operationType != 1).length > 0;
+      this.invoiceList?.data.filter((inv) => inv.checked && inv.operationType != OperationType.SALE).length > 0;
   }
 
   onPageChange(event: PageEvent) {
@@ -133,4 +158,15 @@ export class InvoiceHistoryTableComponent implements AfterViewInit {
     this.onPaginationChange.emit(this.pagination);
   }
 
+  private createUndoInvoiceRequestDTO(invoice: InvoiceHistoryResponseDTO): UndoInvoiceRequestDTO {
+    let dto = new UndoInvoiceRequestDTO();
+
+    dto.dealerCNPJ = invoice.dealerCNPJ;
+    dto.invoiceNumber = invoice.invoiceNumber;
+    dto.invoiceSeries = invoice.invoiceSeries;
+    dto.operationType = invoice.operationType;
+    dto.chassisNumber = invoice.chassisNumber;
+
+    return dto;
+  }
 }

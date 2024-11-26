@@ -1,11 +1,12 @@
 import {ProductTypeResponseDTO} from "./product-type-response-dto";
+import {OperationType} from "../type/operation-type";
 
 export class InvoiceHistoryResponseDTO {
 
   dealerCNPJ!: string;
   invoiceNumber!: string;
   invoiceSeries!: string;
-  operationType!: number;
+  operationType!: OperationType;
   operationTypeDescription!: string;
   emissionDate!: Date;
 

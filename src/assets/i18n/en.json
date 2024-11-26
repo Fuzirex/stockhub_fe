@@ -51,6 +51,9 @@
   "selected-products": "Selected Products",
   "dealer": "Dealer",
   "successful-operation": "Successful Operation",
+  "actions": "Actions",
+  "undo": "Undo",
+  "confirm-undo-op-message": "Are you sure you want to undo the operation of this product?",
 
   "exceptions": {
     "failed-operation": "An error occurred while performing the operation, please try again",
