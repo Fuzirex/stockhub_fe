@@ -21,8 +21,11 @@ export class HeaderComponent {
 
   getDealerDisplayInfo() {
     let dealer = this.contextService.getDealer();
-
     return dealer.name + ' - ' + dealer.cnpj + ' - ' + dealer.cityDesc;
+  }
+
+  renderDealerDisplayInfo(): boolean {
+    return this.contextService.getToken() != '';
   }
 
 }

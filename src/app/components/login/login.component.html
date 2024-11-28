@@ -5,7 +5,7 @@
 
       <mat-form-field class="w-100 mb-3">
         <mat-label>{{ 'cnpj' | translate }}</mat-label>
-        <input matInput formControlName="cnpj"/>
+        <input matInput formControlName="cnpj" placeholder="{{ 'validations.required' | translate }}"/>
         <mat-error *ngIf="loginForm.get('cnpj')?.hasError('required')">
           {{ 'validations.required' | translate }}
         </mat-error>
