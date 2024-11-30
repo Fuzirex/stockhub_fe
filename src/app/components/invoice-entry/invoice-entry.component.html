@@ -167,7 +167,7 @@
         <mat-select formControlName="dealerToTransfer">
           <mat-option></mat-option>
           <mat-option *ngFor="let d of dealerListToTransfer" [value]="d.cnpj">
-            {{ d.name }} - {{ d.cityDesc }} - {{ d.cnpj }}
+            {{ d.name }} - {{ d.cnpj }} - {{ d.cityDesc }}
           </mat-option>
         </mat-select>
 
